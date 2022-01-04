@@ -6,7 +6,6 @@ target 'TestDiary' do
   use_frameworks!
 
   # Pods for TestDiary 
-  # test information
     pod 'SwiftLint'
 
   target 'TestDiaryTests' do
