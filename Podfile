@@ -6,6 +6,7 @@ target 'TestDiary' do
   use_frameworks!
 
   # Pods for TestDiary
+    pod 'SwiftLint'
 
   target 'TestDiaryTests' do
     inherit! :search_paths
