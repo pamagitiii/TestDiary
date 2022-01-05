@@ -5,8 +5,11 @@ target 'TestDiary' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for TestDiary 
+  # Pods for TestDiary
+
     pod 'SwiftLint'
+    pod 'RealmSwift'
+    pod 'FSCalendar'
 
   target 'TestDiaryTests' do
     inherit! :search_paths
