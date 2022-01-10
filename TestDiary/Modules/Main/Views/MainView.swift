@@ -38,12 +38,14 @@ class MainView: UIView {
     
     // MARK: - Module functions
     private func setupViews() {
+        calendar.appearance.headerTitleColor = .systemBlue
+        calendar.appearance.weekdayTextColor = .systemBlue
+        
         addSubviews([calendar, tableView])
     }
 
     private func setupConstraints() {
         //calendar constraints
-        
         NSLayoutConstraint.activate([calendar.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
                                      calendar.leadingAnchor.constraint(equalTo: self.leadingAnchor),
                                      calendar.trailingAnchor.constraint(equalTo: self.trailingAnchor),

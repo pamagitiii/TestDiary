@@ -12,20 +12,22 @@ protocol NewTaskModuleInput {
 	var moduleOutput: NewTaskModuleOutput? { get }
 }
 
-protocol NewTaskModuleOutput: class {
+protocol NewTaskModuleOutput: AnyObject {
+    func newTaskModuleDidFinish()
 }
 
-protocol NewTaskViewInput: class {
+protocol NewTaskViewInput: AnyObject {
 }
 
-protocol NewTaskViewOutput: class {
+protocol NewTaskViewOutput: AnyObject {
+    func onDoneTap()
 }
 
-protocol NewTaskInteractorInput: class {
+protocol NewTaskInteractorInput: AnyObject {
 }
 
-protocol NewTaskInteractorOutput: class {
+protocol NewTaskInteractorOutput: AnyObject {
 }
 
-protocol NewTaskRouterInput: class {
+protocol NewTaskRouterInput: AnyObject {
 }

@@ -25,6 +25,10 @@ extension MainPresenter: MainModuleInput {
 }
 
 extension MainPresenter: MainViewOutput {
+    func didTapAddButton() {
+        router.presentNewTaskModule()
+    }
+    
 }
 
 extension MainPresenter: MainInteractorOutput {

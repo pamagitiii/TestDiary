@@ -19,6 +19,7 @@ protocol MainViewInput: AnyObject {
 }
 
 protocol MainViewOutput: AnyObject {
+    func didTapAddButton()
 }
 
 protocol MainInteractorInput: AnyObject {
@@ -28,4 +29,5 @@ protocol MainInteractorOutput: AnyObject {
 }
 
 protocol MainRouterInput: AnyObject {
+    func presentNewTaskModule()
 }

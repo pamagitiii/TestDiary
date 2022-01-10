@@ -25,6 +25,10 @@ extension NewTaskPresenter: NewTaskModuleInput {
 }
 
 extension NewTaskPresenter: NewTaskViewOutput {
+    func onDoneTap() {
+        moduleOutput?.newTaskModuleDidFinish()
+    }
+    
 }
 
 extension NewTaskPresenter: NewTaskInteractorOutput {

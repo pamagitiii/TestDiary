@@ -14,5 +14,6 @@ extension UIView {
             $0.translatesAutoresizingMaskIntoConstraints = false
             addSubview($0)
         }
+        print("сабвью добавлены")
     }
 }

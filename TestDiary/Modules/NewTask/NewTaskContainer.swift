@@ -32,6 +32,7 @@ final class NewTaskContainer {
         self.input = input
 		self.router = router
 	}
+
 }
 
 struct NewTaskContext {
