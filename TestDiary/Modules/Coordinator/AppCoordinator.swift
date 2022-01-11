@@ -31,7 +31,7 @@ private extension AppCoordinator {
         let context = MainContext(moduleOutput: nil)
         let container = MainContainer.assemble(with: context)
         navigationController.setViewControllers([container.viewController], animated: false)
-        container.viewController.navigationItem.title = "Ежедневник"
+        container.viewController.navigationItem.title = "Diary"
         /*
         let context = FeedContext(moduleDependencies: self.appDependency,
                                   moduleOutput: nil)
