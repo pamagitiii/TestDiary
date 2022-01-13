@@ -25,6 +25,10 @@ extension MainPresenter: MainModuleInput {
 }
 
 extension MainPresenter: MainViewOutput {
+    func viewDidLoad() {
+        interactor.updateDataBaseFromWeb()
+    }
+    
     func didTapAddButton() {
         router.presentNewTaskModule()
     }

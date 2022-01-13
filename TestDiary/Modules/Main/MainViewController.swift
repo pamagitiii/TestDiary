@@ -38,6 +38,8 @@ final class MainViewController: UIViewController {
         navigationItem.rightBarButtonItem = BlockBarButtonItem.item(style: .add, handler: { [weak self] in
             self?.output.didTapAddButton()
         })
+        
+        output.viewDidLoad()
     }
 }
 

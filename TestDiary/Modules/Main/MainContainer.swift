@@ -15,7 +15,7 @@ final class MainContainer {
 
 	static func assemble(with context: MainContext) -> MainContainer {
         let router = MainRouter()
-        let interactor = MainInteractor()
+        let interactor = MainInteractor(tasksNetworkService: context.moduleDependencies.tasksNetworkService)
         let presenter = MainPresenter(router: router, interactor: interactor)
 		let viewController = MainViewController(output: presenter)
 
@@ -39,6 +39,7 @@ final class MainContainer {
 }
 
 struct MainContext {
+    typealias ModuleDependencies = HasTasksNetworkService
+    let moduleDependencies: ModuleDependencies
 	weak var moduleOutput: MainModuleOutput?
-
       }

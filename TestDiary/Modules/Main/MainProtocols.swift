@@ -19,10 +19,12 @@ protocol MainViewInput: AnyObject {
 }
 
 protocol MainViewOutput: AnyObject {
+    func viewDidLoad()
     func didTapAddButton()
 }
 
 protocol MainInteractorInput: AnyObject {
+    func updateDataBaseFromWeb()
 }
 
 protocol MainInteractorOutput: AnyObject {

@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		0F88A1EAC9EA554A842B3A55 /* Pods_TestDiary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED9AB7B127E2DAA694A1E2E /* Pods_TestDiary.framework */; };
 		4780B13BC0948018AFDC2650 /* Pods_TestDiary_TestDiaryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE53C72C8991E4E39608869 /* Pods_TestDiary_TestDiaryUITests.framework */; };
+		CE12981E27904A2E00E77F15 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12981D27904A2E00E77F15 /* TaskModel.swift */; };
+		CE12982227906B1500E77F15 /* URLFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12982127906B1500E77F15 /* URLFactory.swift */; };
+		CE12982427906BB800E77F15 /* NetworkServiceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12982327906BB800E77F15 /* NetworkServiceProtocols.swift */; };
+		CE129826279071EF00E77F15 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE129825279071EF00E77F15 /* NetworkService.swift */; };
+		CE12982827908EC100E77F15 /* NetworkService+Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12982727908EC100E77F15 /* NetworkService+Tasks.swift */; };
+		CE12982A27909D0E00E77F15 /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12982927909D0E00E77F15 /* AppDependency.swift */; };
 		CE149F49278C1E0B00BF990F /* Blocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE149F48278C1E0B00BF990F /* Blocks.swift */; };
 		CE149F4B278C1E3900BF990F /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE149F4A278C1E3900BF990F /* BaseRouter.swift */; };
 		CE149F4D278C23AC00BF990F /* BlockBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE149F4C278C23AC00BF990F /* BlockBarButtonItem.swift */; };
@@ -65,6 +71,12 @@
 		8753D65069F3CBF805454324 /* Pods-TestDiary-TestDiaryUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestDiary-TestDiaryUITests.release.xcconfig"; path = "Target Support Files/Pods-TestDiary-TestDiaryUITests/Pods-TestDiary-TestDiaryUITests.release.xcconfig"; sourceTree = "<group>"; };
 		8B8A6565F11266CA2D537E12 /* Pods-TestDiaryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestDiaryTests.release.xcconfig"; path = "Target Support Files/Pods-TestDiaryTests/Pods-TestDiaryTests.release.xcconfig"; sourceTree = "<group>"; };
 		AAE53C72C8991E4E39608869 /* Pods_TestDiary_TestDiaryUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestDiary_TestDiaryUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE12981D27904A2E00E77F15 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
+		CE12982127906B1500E77F15 /* URLFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLFactory.swift; sourceTree = "<group>"; };
+		CE12982327906BB800E77F15 /* NetworkServiceProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceProtocols.swift; sourceTree = "<group>"; };
+		CE129825279071EF00E77F15 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		CE12982727908EC100E77F15 /* NetworkService+Tasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkService+Tasks.swift"; sourceTree = "<group>"; };
+		CE12982927909D0E00E77F15 /* AppDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
 		CE149F48278C1E0B00BF990F /* Blocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blocks.swift; sourceTree = "<group>"; };
 		CE149F4A278C1E3900BF990F /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
 		CE149F4C278C23AC00BF990F /* BlockBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockBarButtonItem.swift; sourceTree = "<group>"; };
@@ -140,6 +152,42 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		CE129819279047B500E77F15 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CE12981C279049C000E77F15 /* Model */,
+				CE12981B279047D200E77F15 /* Realm */,
+				CE12981A279047C300E77F15 /* Network */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CE12981A279047C300E77F15 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				CE129825279071EF00E77F15 /* NetworkService.swift */,
+				CE12982727908EC100E77F15 /* NetworkService+Tasks.swift */,
+				CE12982327906BB800E77F15 /* NetworkServiceProtocols.swift */,
+				CE12982127906B1500E77F15 /* URLFactory.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		CE12981B279047D200E77F15 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		CE12981C279049C000E77F15 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE12981D27904A2E00E77F15 /* TaskModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		CE149F41278B5D9D00BF990F /* Commom */ = {
 			isa = PBXGroup;
 			children = (
@@ -177,7 +225,6 @@
 		CEA046382784AF4600A3068F /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				CEA0464B2785941400A3068F /* Coordinator */,
 				CEA046452784B1EE00A3068F /* Main */,
 				CEA0464C2785AC0400A3068F /* NewTask */,
 			);
@@ -210,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				CEA04649278593DF00A3068F /* AppCoordinator.swift */,
+				CE12982927909D0E00E77F15 /* AppDependency.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -261,9 +309,11 @@
 		CEFA76C92782120E0058F5C5 /* TestDiary */ = {
 			isa = PBXGroup;
 			children = (
+				CE129819279047B500E77F15 /* Services */,
 				CE149F4E278C3D1C00BF990F /* Resources */,
 				CE149F41278B5D9D00BF990F /* Commom */,
 				CEA046592785AFDB00A3068F /* Extensions */,
+				CEA0464B2785941400A3068F /* Coordinator */,
 				CEA046382784AF4600A3068F /* Modules */,
 				CEFA76CA2782120E0058F5C5 /* AppDelegate.swift */,
 				CEFA76CC2782120E0058F5C5 /* SceneDelegate.swift */,
@@ -563,8 +613,11 @@
 				CEA046582785AC9800A3068F /* NewTaskContainer.swift in Sources */,
 				CEA046482784DA2D00A3068F /* MainView.swift in Sources */,
 				CE149F49278C1E0B00BF990F /* Blocks.swift in Sources */,
+				CE12981E27904A2E00E77F15 /* TaskModel.swift in Sources */,
 				CEA0464A278593DF00A3068F /* AppCoordinator.swift in Sources */,
+				CE12982A27909D0E00E77F15 /* AppDependency.swift in Sources */,
 				CEA046402784B1C000A3068F /* MainRouter.swift in Sources */,
+				CE12982427906BB800E77F15 /* NetworkServiceProtocols.swift in Sources */,
 				CEA046542785AC9800A3068F /* NewTaskRouter.swift in Sources */,
 				CEA046422784B1C000A3068F /* MainProtocols.swift in Sources */,
 				CE149F53278C881700BF990F /* NewTaskView.swift in Sources */,
@@ -572,6 +625,7 @@
 				CEA046552785AC9800A3068F /* NewTaskViewController.swift in Sources */,
 				CEA046562785AC9800A3068F /* NewTaskProtocols.swift in Sources */,
 				CEA0463F2784B1C000A3068F /* MainPresenter.swift in Sources */,
+				CE12982227906B1500E77F15 /* URLFactory.swift in Sources */,
 				CEFA76CD2782120E0058F5C5 /* SceneDelegate.swift in Sources */,
 				CE149F4B278C1E3900BF990F /* BaseRouter.swift in Sources */,
 				CEA046532785AC9800A3068F /* NewTaskPresenter.swift in Sources */,
@@ -579,7 +633,9 @@
 				CEA046432784B1C000A3068F /* MainInteractor.swift in Sources */,
 				CEA046442784B1C000A3068F /* MainContainer.swift in Sources */,
 				CE149F4D278C23AC00BF990F /* BlockBarButtonItem.swift in Sources */,
+				CE129826279071EF00E77F15 /* NetworkService.swift in Sources */,
 				CEA046412784B1C000A3068F /* MainViewController.swift in Sources */,
+				CE12982827908EC100E77F15 /* NetworkService+Tasks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

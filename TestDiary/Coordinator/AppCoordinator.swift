@@ -10,12 +10,13 @@ import CloudKit
 
 class AppCoordinator {
     
+    private let appDependency: AppDependency
     private let window: UIWindow
-    
     private lazy var navigationController = UINavigationController()
     
-    init(window: UIWindow) {
+    init(window: UIWindow, appDependency: AppDependency) {
         self.window = window
+        self.appDependency = appDependency
         setupAppearance()
     }
     
@@ -28,7 +29,7 @@ class AppCoordinator {
 
 private extension AppCoordinator {
     func setupMainModule() {
-        let context = MainContext(moduleOutput: nil)
+        let context = MainContext(moduleDependencies: self.appDependency, moduleOutput: nil)
         let container = MainContainer.assemble(with: context)
         navigationController.setViewControllers([container.viewController], animated: false)
         container.viewController.navigationItem.title = "Diary"

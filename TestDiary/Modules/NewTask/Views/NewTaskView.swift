@@ -9,17 +9,18 @@ import UIKit
 
 class NewTaskView: UIView {
     
-    // MARK: - Properties
+    // MARK: - UI Elements properties
     private(set) lazy var nameTextField: UITextField = {
         let textField = UITextField()
         textField.layer.borderWidth = 0.5
         textField.layer.cornerRadius = 5
         textField.layer.borderColor = UIColor.systemBlue.cgColor
         textField.placeholder = "Enter task name"
+        textField.textAlignment = .center
         return textField
     }()
     
-    let startTimeLabel: UILabel = {
+    private let startTimeLabel: UILabel = {
         let label = UILabel()
         label.text = "Start:"
         label.font = .boldSystemFont(ofSize: 17)
@@ -27,7 +28,7 @@ class NewTaskView: UIView {
         return label
     }()
     
-    let endTimeLabel: UILabel = {
+    private let endTimeLabel: UILabel = {
         let label = UILabel()
         label.text = "End:"
         label.font = .boldSystemFont(ofSize: 17)
@@ -35,7 +36,7 @@ class NewTaskView: UIView {
         return label
     }()
     
-    let descriptionLabel: UILabel = {
+    private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.text = "Task description:"
         label.font = .boldSystemFont(ofSize: 17)
@@ -51,14 +52,38 @@ class NewTaskView: UIView {
         return textView
     }()
     
-    // Date pickers
+    // MARK: - UIDatepickers properties
     private(set) lazy var startDatePicker = UIDatePicker()
     private(set) lazy var endDatePicker = UIDatePicker()
     
-    private(set) var startTextField: UITextField?
-    private(set) var endTextFiled: UITextField?
+    private var startTextField: UITextField?
+    private var endTextFiled: UITextField?
     
+    // MARK: - Other properties
     private var tapGestureRecognizer = UITapGestureRecognizer()
+    weak var output: ViewToControllerOutput?
+    
+    // MARK: - Value properties
+    private(set) var taskName: String? {
+        didSet {
+            output?.inputValueChanged()
+        }
+    }
+    private(set) var taskDescription: String? {
+        didSet {
+            output?.inputValueChanged()
+        }
+    }
+    private(set) var startDate: Date? {
+        didSet {
+            output?.inputValueChanged()
+        }
+    }
+    private(set) var endDate: Date? {
+        didSet {
+            output?.inputValueChanged()
+        }
+    }
     
     // MARK: - Initialization
     override init(frame: CGRect) {
@@ -72,6 +97,9 @@ class NewTaskView: UIView {
     
     // MARK: - Setup Views
     private func setupViews() {
+        
+        nameTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        descriptionTextView.delegate = self
         
         backgroundColor = .white
         
@@ -88,7 +116,7 @@ class NewTaskView: UIView {
         setupDatePickers()
         
         NSLayoutConstraint.activate([descriptionLabel.heightAnchor.constraint(equalToConstant: 30),
-                                     descriptionLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.4),
+                                     descriptionLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5),
                                      descriptionLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
                                      descriptionLabel.topAnchor.constraint(equalTo: endTimeLabel.bottomAnchor, constant: 15)])
         
@@ -97,7 +125,7 @@ class NewTaskView: UIView {
                                      descriptionTextView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
                                      descriptionTextView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 5)])
     }
-
+    
     // MARK: - Setup DatePickers
     private func setupDatePickers() {
         if #available(iOS 14, *) {
@@ -128,6 +156,7 @@ class NewTaskView: UIView {
                 textField.layer.borderWidth = 0.5
                 textField.layer.cornerRadius = 5
                 textField.layer.borderColor = UIColor.systemBlue.cgColor
+                textField.textAlignment = .center
                 return textField
             }()
             
@@ -136,6 +165,7 @@ class NewTaskView: UIView {
                 textField.layer.borderWidth = 0.5
                 textField.layer.cornerRadius = 5
                 textField.layer.borderColor = UIColor.systemBlue.cgColor
+                textField.textAlignment = .center
                 return textField
             }()
             
@@ -147,9 +177,6 @@ class NewTaskView: UIView {
             
             startDatePicker.backgroundColor = .white
             endDatePicker.backgroundColor = .white
-            
-            startDatePicker.addTarget(self, action: #selector(self.datePickerValueChanged(datePicker:)), for: .valueChanged)
-            endDatePicker.addTarget(self, action: #selector(self.datePickerValueChanged(datePicker:)), for: .valueChanged)
             
             addSubviews([startTextField, endTextFiled])
             
@@ -173,22 +200,60 @@ class NewTaskView: UIView {
                                          endTimeLabel.trailingAnchor.constraint(equalTo: endTextFiled.leadingAnchor, constant: 5),
                                          endTimeLabel.centerYAnchor.constraint(equalTo: endTextFiled.centerYAnchor)])
         }
+        
+        startDatePicker.minimumDate = Date()
+        endDatePicker.minimumDate = Date()
+        
+        startDatePicker.addTarget(self, action: #selector(self.datePickerValueChanged(datePicker:)), for: .valueChanged)
+        endDatePicker.addTarget(self, action: #selector(self.datePickerValueChanged(datePicker:)), for: .valueChanged)
     }
     
+    // MARK: - Date Pickers values changed
     @objc private func datePickerValueChanged(datePicker: UIDatePicker) {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ru_Ru")
         dateFormatter.dateFormat = "d MMM yyyy, HH:mm"
         
         if datePicker == startDatePicker {
-            
             startTextField?.text = dateFormatter.string(from: datePicker.date)
+            startDate = datePicker.date
+            
+            endDatePicker.minimumDate = datePicker.date
         } else if datePicker == endDatePicker {
             endTextFiled?.text = dateFormatter.string(from: datePicker.date)
+            endDate = datePicker.date
+        }
+        
+        guard let endDate = endDate else { return }
+        guard let startDate = startDate else { return }
+
+        if endDate < startDate {
+            endTextFiled?.text = ""
+            self.endDate = nil
+        }
+        
+    }
+    // MARK: - Hide keyboard
+    @objc func viewTapped() {
+        endEditing(true)
+    }
+}
+
+// MARK: - Text values changed
+extension NewTaskView: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        if textView.text == "" {
+            taskDescription = nil
+        } else {
+            taskDescription = textView.text
         }
     }
-
-    @objc private func viewTapped() {
-        endEditing(true)
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        if textField.text == "" {
+            taskName = nil
+        } else {
+            taskName = textField.text
+        }
     }
 }
