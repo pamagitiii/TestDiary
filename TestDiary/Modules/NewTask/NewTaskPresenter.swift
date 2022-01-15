@@ -25,6 +25,7 @@ extension NewTaskPresenter: NewTaskModuleInput {
 }
 
 extension NewTaskPresenter: NewTaskViewOutput {
+    
     func checkSaveButtonState(startDate: Date?, endDate: Date?, taskName: String?) {
         if startDate != nil && endDate != nil && taskName != nil {
             view?.changeSaveButtonState(isEnabled: true)
@@ -33,10 +34,14 @@ extension NewTaskPresenter: NewTaskViewOutput {
         }
     }
     
-    func onDoneTap() {
+    func onSaveTap(taskName: String?, startDate: Date?, endDate: Date?, taskDesription: String?) {
+        interactor.saveNewTask(taskName: taskName, startDate: startDate, endDate: endDate, taskDesription: taskDesription)
         moduleOutput?.newTaskModuleDidFinish()
     }
     
+    func onCloseTap() {
+        moduleOutput?.newTaskModuleDidFinish()
+    }
 }
 
 extension NewTaskPresenter: NewTaskInteractorOutput {

@@ -15,6 +15,9 @@
 		CE129826279071EF00E77F15 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE129825279071EF00E77F15 /* NetworkService.swift */; };
 		CE12982827908EC100E77F15 /* NetworkService+Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12982727908EC100E77F15 /* NetworkService+Tasks.swift */; };
 		CE12982A27909D0E00E77F15 /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12982927909D0E00E77F15 /* AppDependency.swift */; };
+		CE12982C2792E66B00E77F15 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12982B2792E66B00E77F15 /* RealmService.swift */; };
+		CE12982E27931ED600E77F15 /* RealmService+Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12982D27931ED500E77F15 /* RealmService+Tasks.swift */; };
+		CE12983027931F1F00E77F15 /* RealmSeviceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12982F27931F1F00E77F15 /* RealmSeviceProtocols.swift */; };
 		CE149F49278C1E0B00BF990F /* Blocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE149F48278C1E0B00BF990F /* Blocks.swift */; };
 		CE149F4B278C1E3900BF990F /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE149F4A278C1E3900BF990F /* BaseRouter.swift */; };
 		CE149F4D278C23AC00BF990F /* BlockBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE149F4C278C23AC00BF990F /* BlockBarButtonItem.swift */; };
@@ -77,6 +80,9 @@
 		CE129825279071EF00E77F15 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		CE12982727908EC100E77F15 /* NetworkService+Tasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkService+Tasks.swift"; sourceTree = "<group>"; };
 		CE12982927909D0E00E77F15 /* AppDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
+		CE12982B2792E66B00E77F15 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
+		CE12982D27931ED500E77F15 /* RealmService+Tasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RealmService+Tasks.swift"; sourceTree = "<group>"; };
+		CE12982F27931F1F00E77F15 /* RealmSeviceProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmSeviceProtocols.swift; sourceTree = "<group>"; };
 		CE149F48278C1E0B00BF990F /* Blocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blocks.swift; sourceTree = "<group>"; };
 		CE149F4A278C1E3900BF990F /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
 		CE149F4C278C23AC00BF990F /* BlockBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockBarButtonItem.swift; sourceTree = "<group>"; };
@@ -176,6 +182,9 @@
 		CE12981B279047D200E77F15 /* Realm */ = {
 			isa = PBXGroup;
 			children = (
+				CE12982B2792E66B00E77F15 /* RealmService.swift */,
+				CE12982D27931ED500E77F15 /* RealmService+Tasks.swift */,
+				CE12982F27931F1F00E77F15 /* RealmSeviceProtocols.swift */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -614,11 +623,14 @@
 				CEA046482784DA2D00A3068F /* MainView.swift in Sources */,
 				CE149F49278C1E0B00BF990F /* Blocks.swift in Sources */,
 				CE12981E27904A2E00E77F15 /* TaskModel.swift in Sources */,
+				CE12982C2792E66B00E77F15 /* RealmService.swift in Sources */,
 				CEA0464A278593DF00A3068F /* AppCoordinator.swift in Sources */,
 				CE12982A27909D0E00E77F15 /* AppDependency.swift in Sources */,
+				CE12982E27931ED600E77F15 /* RealmService+Tasks.swift in Sources */,
 				CEA046402784B1C000A3068F /* MainRouter.swift in Sources */,
 				CE12982427906BB800E77F15 /* NetworkServiceProtocols.swift in Sources */,
 				CEA046542785AC9800A3068F /* NewTaskRouter.swift in Sources */,
+				CE12983027931F1F00E77F15 /* RealmSeviceProtocols.swift in Sources */,
 				CEA046422784B1C000A3068F /* MainProtocols.swift in Sources */,
 				CE149F53278C881700BF990F /* NewTaskView.swift in Sources */,
 				CEA046572785AC9800A3068F /* NewTaskInteractor.swift in Sources */,

@@ -26,7 +26,7 @@ extension MainPresenter: MainModuleInput {
 
 extension MainPresenter: MainViewOutput {
     func viewDidLoad() {
-        interactor.updateDataBaseFromWeb()
+        interactor.updateDataBaseFromNetwork()
     }
     
     func didTapAddButton() {

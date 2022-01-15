@@ -9,14 +9,19 @@ import Foundation
 import RealmSwift
 
 class Task: Object, Decodable {
-    @objc dynamic var id: Int
-    @objc dynamic var dateStart: Date
-    @objc dynamic var dateFinish: Date
-    @objc dynamic var name: String
-    @objc dynamic var taskDescription: String?
+    @Persisted(primaryKey: true) var id: Int
+    @Persisted var dateStart: Date
+    @Persisted var dateFinish: Date
+    @Persisted var name: String
+    @Persisted var taskDescription: String?
     
-    static override func primaryKey() -> String? {
-        return "id"
+    convenience init(id: Int, name: String, dateStart: Date, dateFinish: Date, taskDescription: String?) {
+        self.init()
+        self.id = id
+        self.name = name
+        self.dateStart = dateStart
+        self.dateFinish = dateFinish
+        self.taskDescription = taskDescription
     }
     
     enum CodingKeys: String, CodingKey {

@@ -35,14 +35,17 @@ final class NewTaskViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-        navigationItem.rightBarButtonItem = BlockBarButtonItem.item(style: .save, handler: {
-            
+        navigationItem.rightBarButtonItem = BlockBarButtonItem.item(style: .save, handler: { [weak self] in
+            self?.output.onSaveTap(taskName: self?.customView.taskName,
+                                   startDate: self?.customView.startDate,
+                                   endDate: self?.customView.endDate,
+                                   taskDesription: self?.customView.taskDescription)
         })
         navigationItem.rightBarButtonItem?.tintColor = .systemGreen
         navigationItem.rightBarButtonItem?.isEnabled = false
         
         navigationItem.leftBarButtonItem = BlockBarButtonItem.item(style: .cancel, handler: { [weak self] in
-            self?.output.onDoneTap()
+            self?.output.onCloseTap()
         })
         navigationItem.leftBarButtonItem?.tintColor = .systemRed
     }

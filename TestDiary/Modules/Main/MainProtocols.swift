@@ -24,7 +24,7 @@ protocol MainViewOutput: AnyObject {
 }
 
 protocol MainInteractorInput: AnyObject {
-    func updateDataBaseFromWeb()
+    func updateDataBaseFromNetwork()
 }
 
 protocol MainInteractorOutput: AnyObject {

@@ -15,7 +15,7 @@ final class NewTaskContainer {
 
 	static func assemble(with context: NewTaskContext) -> NewTaskContainer {
         let router = NewTaskRouter()
-        let interactor = NewTaskInteractor()
+        let interactor = NewTaskInteractor(taskRealmService: context.moduleDataBaseDependency.taskRealmService) //
         let presenter = NewTaskPresenter(router: router, interactor: interactor)
 		let viewController = NewTaskViewController(output: presenter)
 
@@ -36,5 +36,6 @@ final class NewTaskContainer {
 }
 
 struct NewTaskContext {
+    let moduleDataBaseDependency: HasRealmService //
 	weak var moduleOutput: NewTaskModuleOutput?
 }

@@ -29,17 +29,12 @@ class AppCoordinator {
 
 private extension AppCoordinator {
     func setupMainModule() {
-        let context = MainContext(moduleDependencies: self.appDependency, moduleOutput: nil)
+        let context = MainContext(moduleNetworkDependency: self.appDependency,
+                                  moduleDataBaseDependency: self.appDependency,
+                                  moduleOutput: nil)
         let container = MainContainer.assemble(with: context)
         navigationController.setViewControllers([container.viewController], animated: false)
         container.viewController.navigationItem.title = "Diary"
-        /*
-        let context = FeedContext(moduleDependencies: self.appDependency,
-                                  moduleOutput: nil)
-        let container = FeedContainer.assemble(with: context)
-        navController.setViewControllers([container.viewController], animated: false)
-        container.viewController.navigationItem.title = NavControllerType.feed.title
-         */
     }
     
     func setupAppearance() {

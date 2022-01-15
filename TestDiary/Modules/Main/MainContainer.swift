@@ -15,7 +15,8 @@ final class MainContainer {
 
 	static func assemble(with context: MainContext) -> MainContainer {
         let router = MainRouter()
-        let interactor = MainInteractor(tasksNetworkService: context.moduleDependencies.tasksNetworkService)
+        let interactor = MainInteractor(tasksNetworkService: context.moduleNetworkDependency.tasksNetworkService,
+                                        taskRealmService: context.moduleDataBaseDependency.taskRealmService)
         let presenter = MainPresenter(router: router, interactor: interactor)
 		let viewController = MainViewController(output: presenter)
 
@@ -27,6 +28,8 @@ final class MainContainer {
         router.navigationControllerProvider = { [weak viewController] in
             viewController?.navigationController
         }
+        
+        router.dataBaseDependency = context.moduleDataBaseDependency // передаём роутеру одну зависимость от реалма
 
         return MainContainer(view: viewController, input: presenter, router: router)
 	}
@@ -39,7 +42,12 @@ final class MainContainer {
 }
 
 struct MainContext {
-    typealias ModuleDependencies = HasTasksNetworkService
-    let moduleDependencies: ModuleDependencies
-	weak var moduleOutput: MainModuleOutput?
+//    typealias ModuleDependencies = HasTasksNetworkService
+//    let moduleDependencies: ModuleDependencies
+//	weak var moduleOutput: MainModuleOutput?
+    
+    //typealias ModuleDependencies = HasTasksNetworkService
+    let moduleNetworkDependency: HasTasksNetworkService
+    let moduleDataBaseDependency: HasRealmService
+    weak var moduleOutput: MainModuleOutput?
       }

@@ -21,11 +21,14 @@ protocol NewTaskViewInput: AnyObject {
 }
 
 protocol NewTaskViewOutput: AnyObject {
-    func onDoneTap()
+    func onCloseTap()
+    func onSaveTap(taskName: String?, startDate: Date?, endDate: Date?, taskDesription: String?)
+    
     func checkSaveButtonState(startDate: Date?, endDate: Date?, taskName: String?)
 }
 
 protocol NewTaskInteractorInput: AnyObject {
+    func saveNewTask(taskName: String?, startDate: Date?, endDate: Date?, taskDesription: String?)
 }
 
 protocol NewTaskInteractorOutput: AnyObject {

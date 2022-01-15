@@ -7,25 +7,41 @@
 
 import Foundation
 
+//MARK: - Protocols
 protocol HasTasksNetworkService {
     var tasksNetworkService: TasksNetworkProtocol { get }
 }
 
+protocol HasRealmService {
+    var taskRealmService: TaskRealmProtocol { get }
+}
+
+//MARK: - AppDependency
 class AppDependency {
     let networkService: NetworkService
+    let realmService: RealmService
     
-    init(networkService: NetworkService) {
+    init(networkService: NetworkService, realmService: RealmService) {
         self.networkService = networkService
+        self.realmService = realmService
     }
     
     static func makeDefault() -> AppDependency {
         let networkService = NetworkService()
-        return AppDependency(networkService: networkService)
+        let realmService = RealmService()
+        return AppDependency(networkService: networkService, realmService: realmService)
     }
 }
 
+//MARK: - Extensions
 extension AppDependency: HasTasksNetworkService {
     var tasksNetworkService: TasksNetworkProtocol {
         return networkService
+    }
+}
+
+extension AppDependency: HasRealmService {
+    var taskRealmService: TaskRealmProtocol {
+        return realmService
     }
 }

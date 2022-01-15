@@ -45,7 +45,16 @@ final class NetworkService {
     }
 }
 
-enum NetworkErrors: Error {
+enum NetworkErrors: Error, LocalizedError {
     case dataIsEmpty
     case decodeIsFail
+    
+    var errorDescription: String? {
+        switch self {
+        case .dataIsEmpty:
+            return "Data is empty"
+        case .decodeIsFail:
+            return "Error while decoding data"
+        }
+    }
 }
