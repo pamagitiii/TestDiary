@@ -11,5 +11,7 @@ protocol TaskRealmProtocol {
     
     func saveTask(task: Task)
     func saveTasks(tasks: [Task])
+    
     func getLastTaskId() -> Int?
+    func getAllTasks() -> [Task]?
 }

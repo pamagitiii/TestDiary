@@ -21,10 +21,12 @@ protocol MainViewInput: AnyObject {
 protocol MainViewOutput: AnyObject {
     func viewDidLoad()
     func didTapAddButton()
+    func didSelectDate(date: Date)
 }
 
 protocol MainInteractorInput: AnyObject {
     func updateDataBaseFromNetwork()
+    func getTasksBy(date: Date)
 }
 
 protocol MainInteractorOutput: AnyObject {

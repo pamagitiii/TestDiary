@@ -10,13 +10,13 @@ import UIKit
 
 final class MainRouter: BaseRouter {
     
-    var dataBaseDependency: HasRealmService? //зависимость от реалма
+    var moduleDependencies: HasDependencies? //сюда передаются две зависимости
 }
 
 extension MainRouter: MainRouterInput {
     func presentNewTaskModule() {
-        guard let dataBaseDependency = dataBaseDependency else { return }
-        let context = NewTaskContext(moduleDataBaseDependency: dataBaseDependency, moduleOutput: self)
+        guard let moduleDependencies = moduleDependencies else { return }
+        let context = NewTaskContext(moduleDataBaseDependency: moduleDependencies, moduleOutput: self) //далее передаётся одна зависимость
         let container = NewTaskContainer.assemble(with: context)
         let navVC = UINavigationController(rootViewController: container.viewController)
         self.navigationController?.present(navVC, animated: true)

@@ -29,9 +29,8 @@ class AppCoordinator {
 
 private extension AppCoordinator {
     func setupMainModule() {
-        let context = MainContext(moduleNetworkDependency: self.appDependency,
-                                  moduleDataBaseDependency: self.appDependency,
-                                  moduleOutput: nil)
+        
+        let context = MainContext(moduleDependencies: self.appDependency, moduleOutput: nil)
         let container = MainContainer.assemble(with: context)
         navigationController.setViewControllers([container.viewController], animated: false)
         container.viewController.navigationItem.title = "Diary"
@@ -52,39 +51,5 @@ private extension AppCoordinator {
         UINavigationBar.appearance().tintColor = .black
         UINavigationBar.appearance().isTranslucent = false
         UINavigationBar.appearance().shadowImage = UIImage()
-        /*
-         UINavigationBar.appearance().barTintColor = .white
-         UINavigationBar.appearance().tintColor = .black
-         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-         UINavigationBar.appearance().isTranslucent = false
-         UINavigationBar.appearance().shadowImage = UIImage()
-         
-         
-         
-         UITabBar.appearance().barTintColor = .white
-         UITabBar.appearance().tintColor = Styles.Color.appGreen
-         */
-        
-        /*
-         if #available(iOS 15, *) {
-         let appearance = UINavigationBarAppearance()
-         appearance.configureWithOpaqueBackground()
-         appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
-         appearance.backgroundColor = .green
-         UINavigationBar.appearance().standardAppearance = appearance
-         UINavigationBar.appearance().scrollEdgeAppearance = appearance// UINavigationBar().standardAppearance
-         }
-         */
     }
-}
-
-/*
- if #available(iOS 15, *) {
- let appearance = UINavigationBarAppearance()
- appearance.configureWithOpaqueBackground()
- appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
- appearance.backgroundColor = .green
- UINavigationBar.appearance().standardAppearance = appearance
- UINavigationBar.appearance().scrollEdgeAppearance = appearance// UINavigationBar().standardAppearance
- }
- */
+    }

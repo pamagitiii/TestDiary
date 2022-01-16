@@ -33,6 +33,9 @@ extension MainPresenter: MainViewOutput {
         router.presentNewTaskModule()
     }
     
+    func didSelectDate(date: Date) {
+        interactor.getTasksBy(date: date)
+    }
 }
 
 extension MainPresenter: MainInteractorOutput {

@@ -204,12 +204,16 @@ class NewTaskView: UIView {
         startDatePicker.minimumDate = Date()
         endDatePicker.minimumDate = Date()
         
+        startDatePicker.timeZone = TimeZone(identifier: "UTC")
+        endDatePicker.timeZone = TimeZone(identifier: "UTC")
+        
         startDatePicker.addTarget(self, action: #selector(self.datePickerValueChanged(datePicker:)), for: .valueChanged)
         endDatePicker.addTarget(self, action: #selector(self.datePickerValueChanged(datePicker:)), for: .valueChanged)
     }
     
     // MARK: - Date Pickers values changed
     @objc private func datePickerValueChanged(datePicker: UIDatePicker) {
+       
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ru_Ru")
         dateFormatter.dateFormat = "d MMM yyyy, HH:mm"
@@ -231,7 +235,6 @@ class NewTaskView: UIView {
             endTextFiled?.text = ""
             self.endDate = nil
         }
-        
     }
     // MARK: - Hide keyboard
     @objc func viewTapped() {

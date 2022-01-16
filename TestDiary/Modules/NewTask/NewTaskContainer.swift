@@ -4,7 +4,7 @@
 //
 //  Created by Anatoliy on 05.01.2022.
 //  
-//
+// swiftlint:disable implicitly_unwrapped_optional
 
 import UIKit
 

@@ -12,6 +12,10 @@ extension RealmService: TaskRealmProtocol {
         return realm.objects(Task.self).sorted(byKeyPath: "id", ascending: false).first?.id
     }
     
+    func getAllTasks() -> [Task]? {
+        return Array(realm.objects(Task.self))
+    }
+    
     func saveTask(task: Task) {
         saveToRealm(nil, task)
     }

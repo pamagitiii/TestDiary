@@ -16,6 +16,8 @@ protocol HasRealmService {
     var taskRealmService: TaskRealmProtocol { get }
 }
 
+typealias HasDependencies = HasTasksNetworkService & HasRealmService
+
 //MARK: - AppDependency
 class AppDependency {
     let networkService: NetworkService

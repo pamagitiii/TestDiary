@@ -4,9 +4,11 @@
 //
 //  Created by Anatoliy on 04.01.2022.
 //  
-//
+// swiftlint:disable no_direct_standard_out_logs
 
 import UIKit
+import FSCalendar
+import SwiftUI
 
 final class MainViewController: UIViewController {
     
@@ -25,13 +27,14 @@ final class MainViewController: UIViewController {
     
     // MARK: - Lifecycle
     override func loadView() {
-          view = mainView
+        view = mainView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
+        mainView.calendar.delegate = self
         mainView.tableView.dataSource = self
         mainView.tableView.delegate = self
         
@@ -55,7 +58,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-
+        
         return cell
     }
     
@@ -64,8 +67,16 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         view.backgroundColor = .white
         return view
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    }
+}
+
+extension MainViewController: FSCalendarDelegate {
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        if let date = date.convertToLocalTime(fromTimeZone: "UTC+6") {
+            output.didSelectDate(date: date)
+        }
     }
 }
 
