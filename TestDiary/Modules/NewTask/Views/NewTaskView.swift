@@ -204,8 +204,8 @@ class NewTaskView: UIView {
         startDatePicker.minimumDate = Date()
         endDatePicker.minimumDate = Date()
         
-        startDatePicker.timeZone = TimeZone(identifier: "UTC")
-        endDatePicker.timeZone = TimeZone(identifier: "UTC")
+        //startDatePicker.timeZone = TimeZone(abbreviation: "GMT")
+        //endDatePicker.timeZone = TimeZone(abbreviation: "GMT")
         
         startDatePicker.addTarget(self, action: #selector(self.datePickerValueChanged(datePicker:)), for: .valueChanged)
         endDatePicker.addTarget(self, action: #selector(self.datePickerValueChanged(datePicker:)), for: .valueChanged)
@@ -213,14 +213,20 @@ class NewTaskView: UIView {
     
     // MARK: - Date Pickers values changed
     @objc private func datePickerValueChanged(datePicker: UIDatePicker) {
-       
+        
+        print("------------------------------дата с пикера")
+        print(datePicker.date)
+
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ru_Ru")
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC+3")
         dateFormatter.dateFormat = "d MMM yyyy, HH:mm"
-        
+
         if datePicker == startDatePicker {
             startTextField?.text = dateFormatter.string(from: datePicker.date)
             startDate = datePicker.date
+            
+            print(dateFormatter.string(from: datePicker.date))
             
             endDatePicker.minimumDate = datePicker.date
         } else if datePicker == endDatePicker {

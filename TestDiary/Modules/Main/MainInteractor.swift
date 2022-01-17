@@ -9,7 +9,7 @@
 import Foundation
 
 final class MainInteractor {
-	weak var output: MainInteractorOutput?
+    weak var output: MainInteractorOutput?
     private let tasksNetworkService: TasksNetworkProtocol
     private let taskRealmService: TaskRealmProtocol
     
@@ -27,7 +27,7 @@ extension MainInteractor: MainInteractorInput {
             switch result {
             case .success(let response):
                 self?.taskRealmService.saveTasks(tasks: response.tasks)
-
+                
                 let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
                 print(paths[0])
                 
@@ -38,23 +38,27 @@ extension MainInteractor: MainInteractorInput {
     }
     
     func getTasksBy(date: Date) {
+        var resutTasksArray: [Task] = []
         
+        let realmTasks: [Task]? = taskRealmService.getAllTasks()
+        guard let realmTasks = realmTasks else { return }
+        let inputDayDateInterval = DateInterval(start: date, duration: 82800 + 3540 + 59) //интрвал с начала дня + 23ч 59мин 59сек
         
-        let newTask = Task(id: 11, name: "тест", dateStart: date, dateFinish: date, taskDescription: "тест календаря")
-        taskRealmService.saveTask(task: newTask)
+        for task in realmTasks {
+            let tasksDateInterval = DateInterval(start: task.dateStart, end: task.dateFinish) //интервал с начала задачи до окончания
+            if tasksDateInterval.intersects(inputDayDateInterval) {
+                resutTasksArray.append(task)
+            }
+            
+        }
         
-//        var resutTasksArray: [Task] = []
-//        let tasks: [Task]? = taskRealmService.getAllTasks()
-//        guard let tasks = tasks else { return }
-//
-//        for task in tasks {
-//            if isSameDay(date1: date, date2: task.dateStart) || isSameDay(date1: date, date2: task.dateFinish) {
-//                resutTasksArray.append(task)
-//            }
-//        }
-//
-//        resutTasksArray.isEmpty ? print("массив пуст") : print("массив НЕ пуст")
-//        print(resutTasksArray.count)
+        if resutTasksArray.isEmpty == false {
+            print("Дела в этот день:")
+            for i in resutTasksArray {
+                print(i.name)
+            }
+        }
+
     }
 }
 

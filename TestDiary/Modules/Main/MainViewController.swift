@@ -38,6 +38,7 @@ final class MainViewController: UIViewController {
         mainView.tableView.dataSource = self
         mainView.tableView.delegate = self
         
+        
         navigationItem.rightBarButtonItem = BlockBarButtonItem.item(style: .add, handler: { [weak self] in
             self?.output.didTapAddButton()
         })
@@ -74,9 +75,20 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension MainViewController: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        if let date = date.convertToLocalTime(fromTimeZone: "UTC+6") {
-            output.didSelectDate(date: date)
-        }
+
+        
+        
+        print("------------------------------")
+        print("дата с календаря")
+        print(date)
+        print("реальная дата")
+        print(date.convertToTimeZone(initTimeZone: TimeZone(abbreviation: "GMT")!, timeZone: TimeZone(abbreviation: "UTC+3")!))
+        print("------------------------------дата с календаря")
+        
+        output.didSelectDate(date: date)
+        
+        
+//        output.didSelectDate(date: date.convertToTimeZone(initTimeZone: TimeZone(abbreviation: "UTC-3")!, timeZone: TimeZone(abbreviation: "GMT")!))
     }
 }
 

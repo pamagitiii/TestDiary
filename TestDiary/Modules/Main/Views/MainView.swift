@@ -38,13 +38,7 @@ class MainView: UIView {
     
     // MARK: - Module functions
     private func setupViews() {
-        
-        
-        print(calendar.formatter.timeZone)
-        //calendar.locale = Locale(identifier: "ru_Ru")
-        
-        //calendar.setValue(TimeZone(identifier: "Europe/Moscow"), forKey: "timeZone")
-        
+
         calendar.appearance.headerTitleColor = .systemBlue
         calendar.appearance.weekdayTextColor = .systemBlue
         

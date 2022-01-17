@@ -370,8 +370,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CEFA76F1278212110058F5C5 /* Build configuration list for PBXNativeTarget "TestDiary" */;
 			buildPhases = (
-				CEA046372784A3ED00A3068F /* SwiftLint */,
 				956CF33C9EB5ACA905026E0A /* [CP] Check Pods Manifest.lock */,
+				CEA046372784A3ED00A3068F /* SwiftLint */,
 				CEFA76C32782120E0058F5C5 /* Sources */,
 				CEFA76C42782120E0058F5C5 /* Frameworks */,
 				CEFA76C52782120E0058F5C5 /* Resources */,
