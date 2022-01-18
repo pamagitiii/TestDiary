@@ -39,11 +39,10 @@ extension MainInteractor: MainInteractorInput {
     
     func getTasksBy(date: Date) {
         var resutTasksArray: [Task] = []
-        
         let realmTasks: [Task]? = taskRealmService.getAllTasks()
-        guard let realmTasks = realmTasks else { return }
         let inputDayDateInterval = DateInterval(start: date, duration: 82800 + 3540 + 59) //интрвал с начала дня + 23ч 59мин 59сек
         
+        guard let realmTasks = realmTasks else { return }
         for task in realmTasks {
             let tasksDateInterval = DateInterval(start: task.dateStart, end: task.dateFinish) //интервал с начала задачи до окончания
             if tasksDateInterval.intersects(inputDayDateInterval) {
