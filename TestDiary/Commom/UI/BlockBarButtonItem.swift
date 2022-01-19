@@ -7,6 +7,8 @@
 
 import UIKit
 
+typealias VoidClosure = () -> Void
+
 class BlockBarButtonItem: UIBarButtonItem {
     
     private var handler: VoidClosure?

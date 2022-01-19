@@ -36,10 +36,30 @@ final class NewTaskViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         navigationItem.rightBarButtonItem = BlockBarButtonItem.item(style: .save, handler: { [weak self] in
-            self?.output.onSaveTap(taskName: self?.customView.taskName,
-                                   startDate: self?.customView.startDate,
-                                   endDate: self?.customView.endDate,
-                                   taskDesription: self?.customView.taskDescription)
+//            self?.output.onSaveTap(taskName: self?.customView.taskName,
+//                                   startDate: self?.customView.startDate,
+//                                   endDate: self?.customView.endDate,
+//                                   taskDesription: self?.customView.taskDescription)
+            
+            let start = self?.customView.startDate
+            let finish = self?.customView.endDate
+            
+            print(start)
+            print(finish)
+            
+            let calendar = Calendar(identifier: .gregorian)
+            let result = calendar.compare(start!, to: finish!, toGranularity: .month)
+            
+            print("___________________________________")
+            switch result {
+            case .orderedAscending:
+                print("день раньше больше чем день конца")
+            case .orderedDescending:
+                print("день старта меньшк чем день конца")
+            case .orderedSame:
+                print("дни одинаковы")
+            }
+            
         })
         navigationItem.rightBarButtonItem?.tintColor = .systemGreen
         navigationItem.rightBarButtonItem?.isEnabled = false

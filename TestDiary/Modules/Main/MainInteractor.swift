@@ -51,12 +51,12 @@ extension MainInteractor: MainInteractorInput {
             
         }
         
-        if resutTasksArray.isEmpty == false {
-            print("Дела в этот день:")
-            for i in resutTasksArray {
-                print(i.name)
-            }
-        }
+//        if resutTasksArray.isEmpty == false {
+//            print("Дела в этот день:")
+//            for i in resutTasksArray {
+//                print(i.name)
+//            }
+//        }
 
     }
 }

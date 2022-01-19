@@ -8,7 +8,6 @@
 
 import UIKit
 import FSCalendar
-import SwiftUI
 
 final class MainViewController: UIViewController {
     
@@ -32,14 +31,11 @@ final class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.backgroundColor = .white
- 
-        mainView.calendar.delegate = self
-        
-        mainView.tableView.dataSource = self
-        mainView.tableView.delegate = self
-        mainView.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        
+        setupTableView()
+        setupCalendar()
+   
         navigationItem.rightBarButtonItem = BlockBarButtonItem.item(style: .add, handler: { [weak self] in
             self?.output.didTapAddButton()
         })
@@ -56,11 +52,11 @@ extension MainViewController: MainViewInput {
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        3
+        4
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -69,57 +65,39 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = UITableViewCell(style: .value1, reuseIdentifier: "cell")
-        
-        cell.textLabel?.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
-        cell.detailTextLabel?.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
-        
-        cell.textLabel?.adjustsFontSizeToFitWidth = true
-        cell.accessoryType = .disclosureIndicator
-        cell.textLabel?.numberOfLines = 1
-        cell.textLabel?.minimumScaleFactor = 11
-        
-        
-        print(cell.textLabel?.adjustsFontSizeToFitWidth)
-        print(cell.textLabel?.font.pointSize)
-        
-        cell.textLabel?.text = "Выгулять собачку собачку собачку"
-        cell.detailTextLabel?.text = "12:00 - 13:45"
-        
+        let cell = mainView.tableView.dequeueCell(cellType: TaskTableViewCell.self, for: indexPath)
+        cell.update(label: "Выгулять собачку", startDateText: "12 jan. 12:00", endDateText: "15 jan. 12:44")
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//        let view = UIView()
-//        view.backgroundColor = .white
-//        return view
-//    }
-//
-//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        return 5
-//    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44
     }
+    
+//    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+//        let header: UITableViewHeaderFooterView = view as? UITableViewHeaderFooterView ?? UITableViewHeaderFooterView()
+//    }
 }
 
 extension MainViewController: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        
-        
-        
-//        print("------------------------------")
-//        print("дата с календаря")
-//        print(date)
-//        print("реальная дата")
-//        print(date.convertToTimeZone(initTimeZone: TimeZone(abbreviation: "GMT")!, timeZone: TimeZone(abbreviation: "UTC+3")!))
-//        print("------------------------------дата с календаря")
-        
-        output.didSelectDate(date: date)
-
+        output.didSelectDate(date: date) //с календаря приходит дата с timezome GMT (UTC+0)
     }
 }
 
 // MARK: - Private extension
 private extension MainViewController {
+    func setupTableView() {
+        mainView.tableView.dataSource = self
+        mainView.tableView.delegate = self
+        mainView.tableView.showsVerticalScrollIndicator = false
+        mainView.tableView.register(TaskTableViewCell.self)
+    }
+    
+    func setupCalendar() {
+        mainView.calendar.delegate = self
+    }
 }
+
+// шрифт для хедера таблицы - <UICTFont: 0x7f9cf1d31500> font-family: "UICTFontTextStyleHeadline"; font-weight: bold; font-style: normal; font-size: 17.00pt
+//стандартная высота ячейки = 44 поинта
