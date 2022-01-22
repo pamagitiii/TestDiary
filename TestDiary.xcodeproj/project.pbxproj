@@ -26,6 +26,12 @@
 		CE6C95A527983C3000C05382 /* UITableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C95A427983C3000C05382 /* UITableView+.swift */; };
 		CE6C95A927984ECB00C05382 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C95A827984ECB00C05382 /* TaskTableViewCell.swift */; };
 		CE6C95AC279888EB00C05382 /* TableViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C95AB279888EB00C05382 /* TableViewViewModel.swift */; };
+		CE6C95B4279ACE9800C05382 /* EditPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C95AE279ACE9700C05382 /* EditPresenter.swift */; };
+		CE6C95B5279ACE9800C05382 /* EditRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C95AF279ACE9700C05382 /* EditRouter.swift */; };
+		CE6C95B6279ACE9800C05382 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C95B0279ACE9700C05382 /* EditViewController.swift */; };
+		CE6C95B7279ACE9800C05382 /* EditProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C95B1279ACE9700C05382 /* EditProtocols.swift */; };
+		CE6C95B8279ACE9800C05382 /* EditInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C95B2279ACE9700C05382 /* EditInteractor.swift */; };
+		CE6C95B9279ACE9800C05382 /* EditContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C95B3279ACE9700C05382 /* EditContainer.swift */; };
 		CEA0463F2784B1C000A3068F /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA046392784B1C000A3068F /* MainPresenter.swift */; };
 		CEA046402784B1C000A3068F /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA0463A2784B1C000A3068F /* MainRouter.swift */; };
 		CEA046412784B1C000A3068F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA0463B2784B1C000A3068F /* MainViewController.swift */; };
@@ -94,6 +100,12 @@
 		CE6C95A427983C3000C05382 /* UITableView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+.swift"; sourceTree = "<group>"; };
 		CE6C95A827984ECB00C05382 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		CE6C95AB279888EB00C05382 /* TableViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewViewModel.swift; sourceTree = "<group>"; };
+		CE6C95AE279ACE9700C05382 /* EditPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPresenter.swift; sourceTree = "<group>"; };
+		CE6C95AF279ACE9700C05382 /* EditRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRouter.swift; sourceTree = "<group>"; };
+		CE6C95B0279ACE9700C05382 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		CE6C95B1279ACE9700C05382 /* EditProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProtocols.swift; sourceTree = "<group>"; };
+		CE6C95B2279ACE9700C05382 /* EditInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInteractor.swift; sourceTree = "<group>"; };
+		CE6C95B3279ACE9700C05382 /* EditContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContainer.swift; sourceTree = "<group>"; };
 		CEA046392784B1C000A3068F /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		CEA0463A2784B1C000A3068F /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
 		CEA0463B2784B1C000A3068F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -268,11 +280,25 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		CE6C95AD279ACE5000C05382 /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				CE6C95AE279ACE9700C05382 /* EditPresenter.swift */,
+				CE6C95AF279ACE9700C05382 /* EditRouter.swift */,
+				CE6C95B0279ACE9700C05382 /* EditViewController.swift */,
+				CE6C95B1279ACE9700C05382 /* EditProtocols.swift */,
+				CE6C95B2279ACE9700C05382 /* EditInteractor.swift */,
+				CE6C95B3279ACE9700C05382 /* EditContainer.swift */,
+			);
+			path = Edit;
+			sourceTree = "<group>";
+		};
 		CEA046382784AF4600A3068F /* Modules */ = {
 			isa = PBXGroup;
 			children = (
 				CEA046452784B1EE00A3068F /* Main */,
 				CEA0464C2785AC0400A3068F /* NewTask */,
+				CE6C95AD279ACE5000C05382 /* Edit */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -660,20 +686,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEFA76CB2782120E0058F5C5 /* AppDelegate.swift in Sources */,
+				CE6C95B5279ACE9800C05382 /* EditRouter.swift in Sources */,
 				CEA046582785AC9800A3068F /* NewTaskContainer.swift in Sources */,
 				CEA046482784DA2D00A3068F /* MainView.swift in Sources */,
 				CE1298322794B9C700E77F15 /* Date+.swift in Sources */,
 				CE6C95A527983C3000C05382 /* UITableView+.swift in Sources */,
 				CE12981E27904A2E00E77F15 /* TaskModel.swift in Sources */,
 				CE12982C2792E66B00E77F15 /* RealmService.swift in Sources */,
+				CE6C95B6279ACE9800C05382 /* EditViewController.swift in Sources */,
 				CEA0464A278593DF00A3068F /* AppCoordinator.swift in Sources */,
 				CE6C95A927984ECB00C05382 /* TaskTableViewCell.swift in Sources */,
 				CE12982A27909D0E00E77F15 /* AppDependency.swift in Sources */,
+				CE6C95B8279ACE9800C05382 /* EditInteractor.swift in Sources */,
 				CE12982E27931ED600E77F15 /* RealmService+Tasks.swift in Sources */,
 				CEA046402784B1C000A3068F /* MainRouter.swift in Sources */,
 				CE12982427906BB800E77F15 /* NetworkServiceProtocols.swift in Sources */,
 				CEA046542785AC9800A3068F /* NewTaskRouter.swift in Sources */,
 				CE12983027931F1F00E77F15 /* RealmSeviceProtocols.swift in Sources */,
+				CE6C95B9279ACE9800C05382 /* EditContainer.swift in Sources */,
 				CEA046422784B1C000A3068F /* MainProtocols.swift in Sources */,
 				CE149F53278C881700BF990F /* NewTaskView.swift in Sources */,
 				CEA046572785AC9800A3068F /* NewTaskInteractor.swift in Sources */,
@@ -682,6 +712,7 @@
 				CEA046562785AC9800A3068F /* NewTaskProtocols.swift in Sources */,
 				CEA0463F2784B1C000A3068F /* MainPresenter.swift in Sources */,
 				CE12982227906B1500E77F15 /* URLFactory.swift in Sources */,
+				CE6C95B7279ACE9800C05382 /* EditProtocols.swift in Sources */,
 				CEFA76CD2782120E0058F5C5 /* SceneDelegate.swift in Sources */,
 				CE149F4B278C1E3900BF990F /* BaseRouter.swift in Sources */,
 				CEA046532785AC9800A3068F /* NewTaskPresenter.swift in Sources */,
@@ -691,6 +722,7 @@
 				CE149F4D278C23AC00BF990F /* BlockBarButtonItem.swift in Sources */,
 				CE129826279071EF00E77F15 /* NetworkService.swift in Sources */,
 				CEA046412784B1C000A3068F /* MainViewController.swift in Sources */,
+				CE6C95B4279ACE9800C05382 /* EditPresenter.swift in Sources */,
 				CE12982827908EC100E77F15 /* NetworkService+Tasks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

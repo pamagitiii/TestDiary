@@ -14,6 +14,8 @@ final class MainViewController: UIViewController {
     private let output: MainViewOutput
     private let mainView = MainView()
     
+    var viewModels: [SectionViewModel] = []
+    
     // MARK: - Initialization
     init(output: MainViewOutput) {
         self.output = output
@@ -40,48 +42,15 @@ final class MainViewController: UIViewController {
             self?.output.didTapAddButton()
         })
         
-        output.viewDidLoad()
+        output.viewDidLoad(calendarToday: mainView.calendar.today ?? Date())
     }
 }
 
 extension MainViewController: MainViewInput {
     
-}
-
-// MARK: - TableView Delegate & DataSource
-extension MainViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        4
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "12:00 - 13:00"
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = mainView.tableView.dequeueCell(cellType: TaskTableViewCell.self, for: indexPath)
-        cell.update(label: "Выгулять собачку", startDateText: "12 jan. 12:00", endDateText: "15 jan. 12:44")
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44
-    }
-    
-//    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-//        let header: UITableViewHeaderFooterView = view as? UITableViewHeaderFooterView ?? UITableViewHeaderFooterView()
-//    }
-}
-
-extension MainViewController: FSCalendarDelegate {
-    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        output.didSelectDate(date: date) //с календаря приходит дата с timezome GMT (UTC+0)
+    func set(viewModels: [SectionViewModel]) {
+        self.viewModels = viewModels
+        mainView.tableView.reloadData()
     }
 }
 
@@ -99,5 +68,50 @@ private extension MainViewController {
     }
 }
 
-// шрифт для хедера таблицы - <UICTFont: 0x7f9cf1d31500> font-family: "UICTFontTextStyleHeadline"; font-weight: bold; font-style: normal; font-size: 17.00pt
-//стандартная высота ячейки = 44 поинта
+// MARK: - TableView Delegate & DataSource
+extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        if viewModels.isEmpty {
+            mainView.tableView.showEmptyMessage("No tasks for today")
+        } else {
+            mainView.tableView.hideEmptyMessage()
+        }
+        return viewModels.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModels[section].cellViewModels.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return viewModels[section].headetTitleText
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = mainView.tableView.dequeueCell(cellType: TaskTableViewCell.self, for: indexPath)
+        let cellViewModel = viewModels[indexPath.section].cellViewModels[indexPath.row]
+        cell.update(with: cellViewModel)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
+    }
+}
+
+// MARK: - FSCalendar Delegate
+extension MainViewController: FSCalendarDelegate {
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        output.didSelectDate(date: date) //с календаря приходит дата с timezome GMT (UTC+0)
+    }
+}

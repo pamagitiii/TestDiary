@@ -1,20 +1,20 @@
 //
-//  NewTaskViewController.swift
+//  EditViewController.swift
 //  TestDiary
 //
-//  Created by Anatoliy on 05.01.2022.
+//  Created by Anatoliy on 21.01.2022.
 //  
 //
 
 import UIKit
 
-final class NewTaskViewController: UIViewController {
-    private let output: NewTaskViewOutput
-    let customView = NewTaskView()
+final class EditViewController: UIViewController {
+    private let output: EditViewOutput
+    private let customView = NewTaskView()
     
-    // MARK: - Init
-    init(output: NewTaskViewOutput) {
+    init(output: EditViewOutput) {
         self.output = output
+        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -36,10 +36,10 @@ final class NewTaskViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         navigationItem.rightBarButtonItem = BlockBarButtonItem.item(style: .save, handler: { [weak self] in
-            self?.output.onSaveTap(taskName: self?.customView.taskName,
-                                   startDate: self?.customView.startDate,
-                                   endDate: self?.customView.endDate,
-                                   taskDesription: self?.customView.taskDescription)
+//            self?.output.onSaveTap(taskName: self?.customView.taskName,
+//                                   startDate: self?.customView.startDate,
+//                                   endDate: self?.customView.endDate,
+//                                   taskDesription: self?.customView.taskDescription)
             
 //            let start = self?.customView.startDate
 //            let finish = self?.customView.endDate
@@ -65,14 +65,14 @@ final class NewTaskViewController: UIViewController {
         navigationItem.rightBarButtonItem?.isEnabled = false
         
         navigationItem.leftBarButtonItem = BlockBarButtonItem.item(style: .cancel, handler: { [weak self] in
-            self?.output.onCloseTap()
+            //self?.output.onCloseTap()
         })
         navigationItem.leftBarButtonItem?.tintColor = .systemRed
     }
 }
 
 // MARK: - Keyboard show/hide logic
-private extension NewTaskViewController {
+private extension EditViewController {
     @objc func keyboardWillShow(notification: NSNotification) {
         
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
@@ -92,16 +92,17 @@ private extension NewTaskViewController {
     }
 }
 
-extension NewTaskViewController: ViewToControllerOutput {
+extension EditViewController: ViewToControllerOutput {
     func inputValueChanged() {
-        output.checkSaveButtonState(startDate: customView.startDate, endDate: customView.endDate, taskName: customView.taskName)
+        //output.checkSaveButtonState(startDate: customView.startDate, endDate: customView.endDate, taskName: customView.taskName)
     }
 }
 
 // MARK: - View Input
-extension NewTaskViewController: NewTaskViewInput {
+extension EditViewController: EditViewInput {
     func changeSaveButtonState(isEnabled: Bool) {
         navigationItem.rightBarButtonItem?.isEnabled = isEnabled
     }
     
 }
+

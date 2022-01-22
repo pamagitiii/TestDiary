@@ -13,6 +13,12 @@ class MainView: UIView {
     // MARK: - Properties
     private(set) lazy var calendar = FSCalendar()
     private(set) lazy var tableView = UITableView()
+    
+    private let separateLineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemGray
+        return view
+    }()
 
     private var didSetupConstraints = false
     
@@ -42,7 +48,7 @@ class MainView: UIView {
         calendar.appearance.headerTitleColor = .systemBlue
         calendar.appearance.weekdayTextColor = .systemBlue
         
-        addSubviews([calendar, tableView])
+        addSubviews([calendar, separateLineView, tableView])
     }
 
     private func setupConstraints() {
@@ -51,10 +57,16 @@ class MainView: UIView {
                                      calendar.leadingAnchor.constraint(equalTo: self.leadingAnchor),
                                      calendar.trailingAnchor.constraint(equalTo: self.trailingAnchor),
                                      calendar.heightAnchor.constraint(equalToConstant: self.frame.width * 0.65)])
+        
+        NSLayoutConstraint.activate([separateLineView.topAnchor.constraint(equalTo: calendar.bottomAnchor),
+                                     separateLineView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+                                     separateLineView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+                                     separateLineView.heightAnchor.constraint(equalToConstant: 0.5)])
+        
         //tableView constraints
         NSLayoutConstraint.activate([tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
                                      tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
                                      tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-                                     tableView.topAnchor.constraint(equalTo: calendar.bottomAnchor)])
+                                     tableView.topAnchor.constraint(equalTo: separateLineView.bottomAnchor)])
     }
 }

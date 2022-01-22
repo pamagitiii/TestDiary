@@ -16,20 +16,22 @@ protocol MainModuleOutput: AnyObject {
 }
 
 protocol MainViewInput: AnyObject {
+    func set(viewModels: [SectionViewModel])
 }
 
 protocol MainViewOutput: AnyObject {
-    func viewDidLoad()
+    func viewDidLoad(calendarToday: Date)
     func didTapAddButton()
     func didSelectDate(date: Date)
 }
 
 protocol MainInteractorInput: AnyObject {
-    func updateDataBaseFromNetwork()
+    func updateDataBaseFromNetwork(todayDate: Date)
     func getTasksBy(date: Date)
 }
 
 protocol MainInteractorOutput: AnyObject {
+    func didLoadTasks(tasks: [Task], forDate: Date)
 }
 
 protocol MainRouterInput: AnyObject {

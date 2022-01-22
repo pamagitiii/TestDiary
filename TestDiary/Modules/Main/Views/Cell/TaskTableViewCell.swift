@@ -60,10 +60,10 @@ final class TaskTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func update(label: String, startDateText: String, endDateText: String) {
-        self.label.text = label
-        self.startLabel.text = startDateText
-        self.endLabel.text = endDateText
+    func update(with viewModel: CellViewModel) {
+        self.label.text = viewModel.taskNameText
+        self.startLabel.text = viewModel.startDateText
+        self.endLabel.text = viewModel.endDateText
     }
 }
 
@@ -76,14 +76,14 @@ private extension TaskTableViewCell {
                                      label.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)])
         
         NSLayoutConstraint.activate([arrowImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-                                     arrowImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.6),
+                                     arrowImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.4),
                                      arrowImageView.widthAnchor.constraint(equalTo: arrowImageView.heightAnchor),
                                      arrowImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5)])
         
-        NSLayoutConstraint.activate([arrowImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-                                     arrowImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.6),
-                                     arrowImageView.widthAnchor.constraint(equalTo: arrowImageView.heightAnchor),
-                                     arrowImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5)])
+//        NSLayoutConstraint.activate([arrowImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+//                                     arrowImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.6),
+//                                     arrowImageView.widthAnchor.constraint(equalTo: arrowImageView.heightAnchor),
+//                                     arrowImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5)])
 
         NSLayoutConstraint.activate([separeteLine.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
                                      separeteLine.heightAnchor.constraint(equalToConstant: 0.5),

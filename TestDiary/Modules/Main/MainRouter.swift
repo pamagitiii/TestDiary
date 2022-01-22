@@ -21,6 +21,10 @@ extension MainRouter: MainRouterInput {
         let navVC = UINavigationController(rootViewController: container.viewController)
         self.navigationController?.present(navVC, animated: true)
     }
+    
+    func presentEditModule() {
+        
+    }
 }
 
 extension MainRouter: NewTaskModuleOutput {

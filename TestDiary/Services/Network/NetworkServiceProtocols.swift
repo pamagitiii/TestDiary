@@ -13,7 +13,7 @@ struct TasksRequestParams {
 }
 
 protocol TasksNetworkProtocol {
-    func requestTasks(params: TasksRequestParams,completion: @escaping (Result<TasksRespose, Error>) -> Void)
+    func requestTasks(params: TasksRequestParams, completion: @escaping (Result<TasksRespose, Error>) -> Void)
 }
 
 struct TasksRespose: Decodable {

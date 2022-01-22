@@ -36,6 +36,6 @@ final class NewTaskContainer {
 }
 
 struct NewTaskContext {
-    let moduleDataBaseDependency: HasRealmService //
+    let moduleDataBaseDependency: HasRealmService
 	weak var moduleOutput: NewTaskModuleOutput?
 }

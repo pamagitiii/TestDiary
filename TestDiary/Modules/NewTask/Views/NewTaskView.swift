@@ -106,8 +106,6 @@ class NewTaskView: UIView {
         
         backgroundColor = .white
         
-        
-        
         tapGestureRecognizer.addTarget(self, action: #selector(self.viewTapped))
         addGestureRecognizer(tapGestureRecognizer)
         

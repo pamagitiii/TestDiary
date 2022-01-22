@@ -12,6 +12,13 @@ final class RealmService {
     
     let realm = try! Realm()
     
+    var notificationCenter: NotificationCenter = NotificationCenter.default
+    var notificationToken: NotificationToken?
+    
+    init() {
+        subscribeToTasksNotifications()
+    }
+
     func saveToRealm<T: Object>(_ objects: [T]?, _ object: T?) {
         
         if objects != nil {

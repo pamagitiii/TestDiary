@@ -9,12 +9,12 @@ import Foundation
 
 struct SectionViewModel {
     let headetTitleText: String
-    let cellViewModels: [CellViewModel]
+    var cellViewModels: [CellViewModel]
 }
 
 struct CellViewModel {
     let id: Int
     let taskNameText: String
-    let statDateText: String
+    let startDateText: String
     let endDateText: String
 }
