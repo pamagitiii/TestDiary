@@ -107,6 +107,11 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        output.didSelectRowWith(id: viewModels[indexPath.section].cellViewModels[indexPath.row].id)
+        
+    }
 }
 
 // MARK: - FSCalendar Delegate

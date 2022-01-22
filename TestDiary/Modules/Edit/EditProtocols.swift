@@ -13,12 +13,14 @@ protocol EditModuleInput {
 }
 
 protocol EditModuleOutput: AnyObject {
+    func editModuleDidFinish()
 }
 
 protocol EditViewInput: AnyObject {
 }
 
 protocol EditViewOutput: AnyObject {
+    func onCloseTap()
 }
 
 protocol EditInteractorInput: AnyObject {

@@ -23,6 +23,7 @@ protocol MainViewOutput: AnyObject {
     func viewDidLoad(calendarToday: Date)
     func didTapAddButton()
     func didSelectDate(date: Date)
+    func didSelectRowWith(id: Int)
 }
 
 protocol MainInteractorInput: AnyObject {
@@ -36,4 +37,5 @@ protocol MainInteractorOutput: AnyObject {
 
 protocol MainRouterInput: AnyObject {
     func presentNewTaskModule()
+    func presentEditModule(taskId: Int)
 }

@@ -15,7 +15,7 @@ final class EditContainer {
 
 	static func assemble(with context: EditContext) -> EditContainer {
         let router = EditRouter()
-        let interactor = EditInteractor(taskRealmService: context.moduleDataBaseDependency.taskRealmService)
+        let interactor = EditInteractor(taskRealmService: context.moduleDataBaseDependency.taskRealmService, id: context.taskId)
         let presenter = EditPresenter(router: router, interactor: interactor)
 		let viewController = EditViewController(output: presenter)
 
@@ -37,4 +37,5 @@ final class EditContainer {
 struct EditContext {
     let moduleDataBaseDependency: HasRealmService
 	weak var moduleOutput: EditModuleOutput?
+    let taskId: Int
 }

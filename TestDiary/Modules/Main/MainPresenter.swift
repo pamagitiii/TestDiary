@@ -29,6 +29,10 @@ extension MainPresenter: MainModuleInput {
 
 extension MainPresenter: MainViewOutput {
     
+    func didSelectRowWith(id: Int) {
+        router.presentEditModule(taskId: id)
+    }
+    
     func viewDidLoad(calendarToday: Date) {
         interactor.updateDataBaseFromNetwork(todayDate: calendarToday)
     }

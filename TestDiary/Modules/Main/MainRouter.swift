@@ -14,6 +14,14 @@ final class MainRouter: BaseRouter {
 }
 
 extension MainRouter: MainRouterInput {
+    func presentEditModule(taskId: Int) {
+        guard let moduleDependencies = moduleDependencies else { return }
+        let context = EditContext(moduleDataBaseDependency: moduleDependencies, moduleOutput: self, taskId: taskId)
+        let container = EditContainer.assemble(with: context)
+        let navVC = UINavigationController(rootViewController: container.viewController)
+        self.navigationController?.present(navVC, animated: true)
+    }
+    
     func presentNewTaskModule() {
         guard let moduleDependencies = moduleDependencies else { return }
         let context = NewTaskContext(moduleDataBaseDependency: moduleDependencies, moduleOutput: self) //далее передаётся одна зависимость
@@ -21,14 +29,16 @@ extension MainRouter: MainRouterInput {
         let navVC = UINavigationController(rootViewController: container.viewController)
         self.navigationController?.present(navVC, animated: true)
     }
-    
-    func presentEditModule() {
-        
-    }
 }
 
 extension MainRouter: NewTaskModuleOutput {
     func newTaskModuleDidFinish() {
+        navigationController?.dismiss(animated: true)
+    }
+}
+
+extension MainRouter: EditModuleOutput {
+    func editModuleDidFinish() {
         navigationController?.dismiss(animated: true)
     }
 }

@@ -22,9 +22,14 @@ final class EditPresenter {
 }
 
 extension EditPresenter: EditModuleInput {
+    
 }
 
 extension EditPresenter: EditViewOutput {
+    func onCloseTap() {
+        moduleOutput?.editModuleDidFinish()
+    }
+    
 }
 
 extension EditPresenter: EditInteractorOutput {
