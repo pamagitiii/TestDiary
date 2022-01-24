@@ -26,6 +26,15 @@ extension EditPresenter: EditModuleInput {
 }
 
 extension EditPresenter: EditViewOutput {
+    func onDeleteTap() {
+        interactor.deleteTask()
+        moduleOutput?.editModuleDidFinish()
+    }
+    
+    func viewWillAppear() {
+        interactor.getTask()
+    }
+    
     func onCloseTap() {
         moduleOutput?.editModuleDidFinish()
     }
@@ -33,4 +42,11 @@ extension EditPresenter: EditViewOutput {
 }
 
 extension EditPresenter: EditInteractorOutput {
+    func didLoadTask(task: Task) {
+        view?.updateViewWith(viewModel: EditTaskViewModel(name: task.name,
+                                                        startDate: task.dateStart,
+                                                        endDate: task.dateFinish,
+                                                        description: task.taskDescription))
+    }
+    
 }

@@ -66,4 +66,3 @@ extension UITableView {
         self.separatorStyle = .singleLine
     }
 }
-

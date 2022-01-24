@@ -33,6 +33,7 @@
 		CE6C95B8279ACE9800C05382 /* EditInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C95B2279ACE9700C05382 /* EditInteractor.swift */; };
 		CE6C95B9279ACE9800C05382 /* EditContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C95B3279ACE9700C05382 /* EditContainer.swift */; };
 		CE6C95BD279C41B100C05382 /* BaseTaskEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C95BC279C41B100C05382 /* BaseTaskEditVC.swift */; };
+		CE6C95C0279EBEE100C05382 /* EditTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C95BF279EBEE100C05382 /* EditTaskViewModel.swift */; };
 		CEA0463F2784B1C000A3068F /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA046392784B1C000A3068F /* MainPresenter.swift */; };
 		CEA046402784B1C000A3068F /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA0463A2784B1C000A3068F /* MainRouter.swift */; };
 		CEA046412784B1C000A3068F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA0463B2784B1C000A3068F /* MainViewController.swift */; };
@@ -108,6 +109,7 @@
 		CE6C95B2279ACE9700C05382 /* EditInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInteractor.swift; sourceTree = "<group>"; };
 		CE6C95B3279ACE9700C05382 /* EditContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContainer.swift; sourceTree = "<group>"; };
 		CE6C95BC279C41B100C05382 /* BaseTaskEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTaskEditVC.swift; sourceTree = "<group>"; };
+		CE6C95BF279EBEE100C05382 /* EditTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskViewModel.swift; sourceTree = "<group>"; };
 		CEA046392784B1C000A3068F /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		CEA0463A2784B1C000A3068F /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
 		CEA0463B2784B1C000A3068F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 		CE6C95AD279ACE5000C05382 /* Edit */ = {
 			isa = PBXGroup;
 			children = (
+				CE6C95BE279EBE8100C05382 /* TaskViewModel */,
 				CE6C95AE279ACE9700C05382 /* EditPresenter.swift */,
 				CE6C95AF279ACE9700C05382 /* EditRouter.swift */,
 				CE6C95B0279ACE9700C05382 /* EditViewController.swift */,
@@ -294,6 +297,14 @@
 				CE6C95B3279ACE9700C05382 /* EditContainer.swift */,
 			);
 			path = Edit;
+			sourceTree = "<group>";
+		};
+		CE6C95BE279EBE8100C05382 /* TaskViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CE6C95BF279EBEE100C05382 /* EditTaskViewModel.swift */,
+			);
+			path = TaskViewModel;
 			sourceTree = "<group>";
 		};
 		CEA046382784AF4600A3068F /* Modules */ = {
@@ -707,6 +718,7 @@
 				CEA046542785AC9800A3068F /* NewTaskRouter.swift in Sources */,
 				CE12983027931F1F00E77F15 /* RealmSeviceProtocols.swift in Sources */,
 				CE6C95B9279ACE9800C05382 /* EditContainer.swift in Sources */,
+				CE6C95C0279EBEE100C05382 /* EditTaskViewModel.swift in Sources */,
 				CEA046422784B1C000A3068F /* MainProtocols.swift in Sources */,
 				CE149F53278C881700BF990F /* NewTaskView.swift in Sources */,
 				CEA046572785AC9800A3068F /* NewTaskInteractor.swift in Sources */,

@@ -13,16 +13,20 @@ final class MainInteractor {
     private let tasksNetworkService: TasksNetworkProtocol
     private let taskRealmService: TaskRealmProtocol
     
-    private lazy var notificationCenter = taskRealmService.notificationCenter
     //при загруке контроллера приходит сегодняшняя дата с календаря, при тапе по календарю - выбранная юзером дата
     private var chosenDate: Date
     
     init(tasksNetworkService: TasksNetworkProtocol, taskRealmService: TaskRealmProtocol) {
         self.tasksNetworkService = tasksNetworkService
         self.taskRealmService = taskRealmService
+        
         self.chosenDate = Date()
         
-        notificationCenter.addObserver(self, selector: #selector(dataBaseUpdated), name: Notification.Name("DataBaseUpdated"), object: nil)
+        self.taskRealmService.subscribeToTasksNotifications()
+        self.taskRealmService.notificationCenter?.addObserver(self,
+                                                              selector: #selector(dataBaseUpdated),
+                                                              name: Notification.Name("DataBaseUpdated"),
+                                                              object: nil)
     }
 }
 
@@ -73,6 +77,7 @@ extension MainInteractor: MainInteractorInput {
 
 private extension MainInteractor {
     @objc func dataBaseUpdated() {
+        print("база данных изменена")
         getTasksBy(date: chosenDate)
     }
 }

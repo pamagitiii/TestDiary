@@ -10,12 +10,16 @@ import RealmSwift
 
 protocol TaskRealmProtocol {
     
-    var notificationCenter: NotificationCenter { get }
+    var notificationCenter: NotificationCenter? { get }
     
     func saveTask(task: Task)
     func saveTasks(tasks: [Task])
     
+    func deleteTaskWith(primaryKey: Int)
+    
     func getLastTaskId() -> Int?
     func getAllTasks() -> [Task]?
+    func getTaskBy(primaryKey: Int) -> Task?
+    
     func subscribeToTasksNotifications()
 }

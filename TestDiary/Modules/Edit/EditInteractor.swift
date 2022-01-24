@@ -21,4 +21,14 @@ final class EditInteractor {
 }
 
 extension EditInteractor: EditInteractorInput {
+    func deleteTask() {
+        self.taskRealmService.deleteTaskWith(primaryKey: id)
+    }
+    
+    
+    func getTask() {
+        guard let task = taskRealmService.getTaskBy(primaryKey: id) else { return }
+        output?.didLoadTask(task: task)
+    }
+    
 }

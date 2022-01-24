@@ -32,7 +32,37 @@ class BaseTaskEditViewController: UIViewController, ViewToControllerOutput {
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
+    func setupWithViewModel(viewModel: EditTaskViewModel) {
+        
+        
+
+        customView.nameTextField.text = viewModel.name
+        customView.startDatePicker.date = viewModel.startDate
+        customView.endDatePicker.date = viewModel.endDate
+        customView.descriptionTextView.text = viewModel.description
+        
+        customView.startDate = viewModel.startDate
+        
+        
+        
+        if #available(iOS 14, *) {
+
+        } else {
+            let formatter = DateFormatter()
+            formatter.locale = Locale(identifier: "ru_Ru")
+            formatter.timeZone = TimeZone(abbreviation: "UTC+3")
+            formatter.dateFormat = "d MMM yyyy, HH:mm"
+            customView.startTextField?.text = formatter.string(from: viewModel.startDate)
+            customView.endTextFiled?.text = formatter.string(from: viewModel.endDate)
+        }
+            
+            
+        
+        
+    }
+    
     func inputValueChanged() {
+        //
     }
 }
 

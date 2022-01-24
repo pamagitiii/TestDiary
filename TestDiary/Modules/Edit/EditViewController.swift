@@ -26,11 +26,20 @@ final class EditViewController: BaseTaskEditViewController {
         setupNavigationBar()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        output.viewWillAppear()
+    }
+    
     override func inputValueChanged() {
     }
 }
 // MARK: - View Input
 extension EditViewController: EditViewInput {
+    func updateViewWith(viewModel: EditTaskViewModel) {
+        setupWithViewModel(viewModel: viewModel)
+    }
+    
 //    func changeSaveButtonState(isEnabled: Bool) {
 //        navigationItem.rightBarButtonItem?.isEnabled = isEnabled
 //    }
@@ -48,7 +57,9 @@ private extension EditViewController {
         
         let doneBarButton = BlockBarButtonItem.item(style: .save, handler: { [weak self] in
         })
+        
         let deleteBarButton = BlockBarButtonItem.item(style: .trash, handler: { [weak self] in
+            self?.output.onDeleteTap()
         })
         
         navigationItem.rightBarButtonItems = [doneBarButton, deleteBarButton]

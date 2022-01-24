@@ -57,8 +57,15 @@ class NewTaskView: UIView {
     private(set) lazy var startDatePicker = UIDatePicker()
     private(set) lazy var endDatePicker = UIDatePicker()
     
-    private var startTextField: UITextField?
-    private var endTextFiled: UITextField?
+    private(set) var startTextField: UITextField?
+    private(set) var endTextFiled: UITextField?
+    
+    private lazy var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(abbreviation: "UTC+3")
+        formatter.dateFormat = "d MMM yyyy, HH:mm"
+        return formatter
+    }()
     
     // MARK: - Other properties
     private var tapGestureRecognizer = UITapGestureRecognizer()
@@ -75,8 +82,9 @@ class NewTaskView: UIView {
             output?.inputValueChanged()
         }
     }
-    private(set) var startDate: Date? {
+    var startDate: Date? {
         didSet {
+            print(startDate)
             output?.inputValueChanged()
         }
     }
@@ -98,6 +106,8 @@ class NewTaskView: UIView {
     
     // MARK: - Setup Views
     private func setupViews() {
+        
+        startDate = Date()
         
         nameTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         
@@ -160,6 +170,7 @@ class NewTaskView: UIView {
                 textField.layer.cornerRadius = 5
                 textField.layer.borderColor = UIColor.systemBlue.cgColor
                 textField.textAlignment = .center
+                textField.text = dateFormatter.string(from: Date())
                 return textField
             }()
             
@@ -216,10 +227,9 @@ class NewTaskView: UIView {
     
     // MARK: - Date Pickers values changed
     @objc private func datePickerValueChanged(datePicker: UIDatePicker) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ru_Ru")
-        dateFormatter.timeZone = TimeZone(abbreviation: "UTC+3")
-        dateFormatter.dateFormat = "d MMM yyyy, HH:mm"
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.timeZone = TimeZone(abbreviation: "UTC+3")
+//        dateFormatter.dateFormat = "d MMM yyyy, HH:mm"
 
         if datePicker == startDatePicker {
             startTextField?.text = dateFormatter.string(from: datePicker.date)
