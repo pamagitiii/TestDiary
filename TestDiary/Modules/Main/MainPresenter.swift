@@ -96,7 +96,7 @@ private extension MainPresenter {
     }
 }
 
-//первая версия алгоритма для  формирования вьюмоделей
+///первая версия алгоритма для  формирования вьюмоделей
 /*
  var date = date
  let tasks = tasks

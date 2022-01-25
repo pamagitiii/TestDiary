@@ -8,7 +8,9 @@
 import UIKit
 
 class BaseTaskEditViewController: UIViewController, ViewToControllerOutput {
-    let customView = NewTaskView()
+    
+    private let customView = NewTaskView()
+     var viewValues = EditTaskViewModel(name: "", startDate: Date(), endDate: Date(), description: nil)
     
     // MARK: - Init
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -34,19 +36,19 @@ class BaseTaskEditViewController: UIViewController, ViewToControllerOutput {
     
     func setupWithViewModel(viewModel: EditTaskViewModel) {
         
+        viewValues = viewModel
         
-
         customView.nameTextField.text = viewModel.name
         customView.startDatePicker.date = viewModel.startDate
         customView.endDatePicker.date = viewModel.endDate
         customView.descriptionTextView.text = viewModel.description
         
         customView.startDate = viewModel.startDate
-        
-        
+        customView.endDate = viewModel.endDate
+        customView.taskName = viewModel.name
+        customView.taskDescription = viewModel.description
         
         if #available(iOS 14, *) {
-
         } else {
             let formatter = DateFormatter()
             formatter.locale = Locale(identifier: "ru_Ru")
@@ -55,15 +57,15 @@ class BaseTaskEditViewController: UIViewController, ViewToControllerOutput {
             customView.startTextField?.text = formatter.string(from: viewModel.startDate)
             customView.endTextFiled?.text = formatter.string(from: viewModel.endDate)
         }
-            
-            
-        
-        
     }
     
-    func inputValueChanged() {
-        //
+    func inputValueChanged(name: String, startDate: Date, endDate: Date, description: String?) {
+        viewValues.name = name
+        viewValues.endDate = endDate
+        viewValues.startDate = startDate
+        viewValues.description = description
     }
+
 }
 
 // MARK: - Keyboard show/hide logic

@@ -19,9 +19,8 @@ final class NewTaskInteractor {
 }
 
 extension NewTaskInteractor: NewTaskInteractorInput {
-    func saveNewTask(taskName: String?, startDate: Date?, endDate: Date?, taskDesription: String?) {
+    func saveNewTask(newTaskViewModel: EditTaskViewModel) {
         
-        guard let taskName = taskName, let startDate = startDate, let endDate = endDate else { return }
         let lastId: Int? = taskRealmService.getLastTaskId()
         var newId: Int
         
@@ -29,9 +28,14 @@ extension NewTaskInteractor: NewTaskInteractorInput {
             newId = lastId!
             newId += 1
         } else {
-            newId = generateNewId(firstDate: startDate, secondDate: endDate)
+            newId = generateNewId(firstDate: newTaskViewModel.startDate, secondDate: newTaskViewModel.endDate)
         }
-        let newTask = Task(id: newId, name: taskName, dateStart: startDate, dateFinish: endDate, taskDescription: taskDesription)
+        let newTask = Task(id: newId,
+                           name: newTaskViewModel.name,
+                           dateStart: newTaskViewModel.startDate,
+                           dateFinish: newTaskViewModel.endDate,
+                           taskDescription: newTaskViewModel.description)
+        
         taskRealmService.saveTask(task: newTask)
     }
 }

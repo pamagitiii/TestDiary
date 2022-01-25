@@ -72,25 +72,24 @@ class NewTaskView: UIView {
     weak var output: ViewToControllerOutput?
     
     // MARK: - Value properties
-    private(set) var taskName: String? {
+    var taskName = "" {
         didSet {
-            output?.inputValueChanged()
+            output?.inputValueChanged(name: taskName, startDate: startDate, endDate: endDate, description: taskDescription)
         }
     }
-    private(set) var taskDescription: String? {
+    var taskDescription: String? {
         didSet {
-            output?.inputValueChanged()
+            output?.inputValueChanged(name: taskName, startDate: startDate, endDate: endDate, description: taskDescription)
         }
     }
-    var startDate: Date? {
+    var startDate = Date() {
         didSet {
-            print(startDate)
-            output?.inputValueChanged()
+            output?.inputValueChanged(name: taskName, startDate: startDate, endDate: endDate, description: taskDescription)
         }
     }
-    private(set) var endDate: Date? {
+    var endDate = Date() {
         didSet {
-            output?.inputValueChanged()
+            output?.inputValueChanged(name: taskName, startDate: startDate, endDate: endDate, description: taskDescription)
         }
     }
     
@@ -107,7 +106,7 @@ class NewTaskView: UIView {
     // MARK: - Setup Views
     private func setupViews() {
         
-        startDate = Date()
+        startDatePicker.date = Date()
         
         nameTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         
@@ -227,26 +226,26 @@ class NewTaskView: UIView {
     
     // MARK: - Date Pickers values changed
     @objc private func datePickerValueChanged(datePicker: UIDatePicker) {
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.timeZone = TimeZone(abbreviation: "UTC+3")
-//        dateFormatter.dateFormat = "d MMM yyyy, HH:mm"
-
+        //        let dateFormatter = DateFormatter()
+        //        dateFormatter.timeZone = TimeZone(abbreviation: "UTC+3")
+        //        dateFormatter.dateFormat = "d MMM yyyy, HH:mm"
+        
         if datePicker == startDatePicker {
             startTextField?.text = dateFormatter.string(from: datePicker.date)
             startDate = datePicker.date
-
             endDatePicker.minimumDate = datePicker.date
+            
         } else if datePicker == endDatePicker {
             endTextFiled?.text = dateFormatter.string(from: datePicker.date)
             endDate = datePicker.date
         }
         
-        guard let endDate = endDate else { return }
-        guard let startDate = startDate else { return }
-
+        //        guard let endDate = endDate else { return }
+        //        guard let startDate = startDate else { return }
+        
         if endDate < startDate {
             endTextFiled?.text = ""
-            self.endDate = nil
+            //self.endDate = nil
         }
     }
     // MARK: - Hide keyboard
@@ -266,11 +265,8 @@ extension NewTaskView: UITextViewDelegate, UITextFieldDelegate {
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        if textField.text == "" {
-            taskName = nil
-        } else {
-            taskName = textField.text
-        }
+        guard let text = textField.text else { return }
+        taskName = text
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

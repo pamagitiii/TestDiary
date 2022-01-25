@@ -10,7 +10,6 @@ import RealmSwift
 
 extension RealmService: TaskRealmProtocol {
     
-
     func getLastTaskId() -> Int? {
         return fetchSortedObjects(objecType: Task.self, keyPath: "id", ascending: false).first?.id
     }

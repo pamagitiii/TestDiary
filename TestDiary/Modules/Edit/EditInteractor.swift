@@ -21,10 +21,19 @@ final class EditInteractor {
 }
 
 extension EditInteractor: EditInteractorInput {
+    func updateTask(editedTaskViewModel: EditTaskViewModel) {
+        let taskToUpdate = Task(id: id,
+                                name: editedTaskViewModel.name,
+                                dateStart: editedTaskViewModel.startDate,
+                                dateFinish: editedTaskViewModel.endDate,
+                                taskDescription: editedTaskViewModel.description)
+        
+        taskRealmService.saveTask(task: taskToUpdate)
+    }
+    
     func deleteTask() {
         self.taskRealmService.deleteTaskWith(primaryKey: id)
     }
-    
     
     func getTask() {
         guard let task = taskRealmService.getTaskBy(primaryKey: id) else { return }

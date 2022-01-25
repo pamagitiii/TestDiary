@@ -26,6 +26,19 @@ extension EditPresenter: EditModuleInput {
 }
 
 extension EditPresenter: EditViewOutput {
+    func onSaveTap(editedTaskViewModel: EditTaskViewModel) {
+        interactor.updateTask(editedTaskViewModel: editedTaskViewModel)
+        moduleOutput?.editModuleDidFinish()
+    }
+    
+    func checkSaveButtonState(inputValue: EditTaskViewModel) {
+        if inputValue.name != "" && inputValue.endDate > inputValue.startDate {
+            view?.changeSaveButtonState(isEnabled: true)
+        } else {
+            view?.changeSaveButtonState(isEnabled: false)
+        }
+    }
+    
     func onDeleteTap() {
         interactor.deleteTask()
         moduleOutput?.editModuleDidFinish()

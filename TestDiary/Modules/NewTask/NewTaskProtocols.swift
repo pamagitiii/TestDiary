@@ -22,13 +22,13 @@ protocol NewTaskViewInput: AnyObject {
 
 protocol NewTaskViewOutput: AnyObject {
     func onCloseTap()
-    func onSaveTap(taskName: String?, startDate: Date?, endDate: Date?, taskDesription: String?)
+    func onSaveTap(newTaskViewModel: EditTaskViewModel)
     
-    func checkSaveButtonState(startDate: Date?, endDate: Date?, taskName: String?)
+    func checkSaveButtonState(inputValue: EditTaskViewModel)
 }
 
 protocol NewTaskInteractorInput: AnyObject {
-    func saveNewTask(taskName: String?, startDate: Date?, endDate: Date?, taskDesription: String?)
+    func saveNewTask(newTaskViewModel: EditTaskViewModel)
 }
 
 protocol NewTaskInteractorOutput: AnyObject {
@@ -39,5 +39,5 @@ protocol NewTaskRouterInput: AnyObject {
 
 //my protocol
 protocol ViewToControllerOutput: AnyObject {
-    func inputValueChanged()
+    func inputValueChanged(name: String, startDate: Date, endDate: Date, description: String?)
 }

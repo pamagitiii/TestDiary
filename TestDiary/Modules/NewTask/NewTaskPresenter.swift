@@ -26,16 +26,22 @@ extension NewTaskPresenter: NewTaskModuleInput {
 
 extension NewTaskPresenter: NewTaskViewOutput {
     
-    func checkSaveButtonState(startDate: Date?, endDate: Date?, taskName: String?) {
-        if startDate != nil && endDate != nil && taskName != nil {
+    func checkSaveButtonState(inputValue: EditTaskViewModel) {
+        if inputValue.name != "" && inputValue.endDate > inputValue.startDate {
             view?.changeSaveButtonState(isEnabled: true)
         } else {
             view?.changeSaveButtonState(isEnabled: false)
         }
+        
+//        if startDate != nil && endDate != nil && taskName != nil {
+//            view?.changeSaveButtonState(isEnabled: true)
+//        } else {
+//            view?.changeSaveButtonState(isEnabled: false)
+//        }
     }
     
-    func onSaveTap(taskName: String?, startDate: Date?, endDate: Date?, taskDesription: String?) {
-        interactor.saveNewTask(taskName: taskName, startDate: startDate, endDate: endDate, taskDesription: taskDesription)
+    func onSaveTap(newTaskViewModel: EditTaskViewModel) {
+        interactor.saveNewTask(newTaskViewModel: newTaskViewModel)
         moduleOutput?.newTaskModuleDidFinish()
     }
     
@@ -45,11 +51,4 @@ extension NewTaskPresenter: NewTaskViewOutput {
 }
 
 extension NewTaskPresenter: NewTaskInteractorOutput {
-}
-
-extension NewTaskPresenter: ViewToControllerOutput {
-    func inputValueChanged() {
-        
-    }
-    
 }

@@ -20,7 +20,7 @@ final class EditViewController: BaseTaskEditViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Life cy
+    // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
@@ -31,7 +31,9 @@ final class EditViewController: BaseTaskEditViewController {
         output.viewWillAppear()
     }
     
-    override func inputValueChanged() {
+    override func inputValueChanged(name: String, startDate: Date, endDate: Date, description: String?) {
+        super.inputValueChanged(name: name, startDate: startDate, endDate: endDate, description: description)
+        output.checkSaveButtonState(inputValue: self.viewValues)
     }
 }
 // MARK: - View Input
@@ -40,9 +42,9 @@ extension EditViewController: EditViewInput {
         setupWithViewModel(viewModel: viewModel)
     }
     
-//    func changeSaveButtonState(isEnabled: Bool) {
-//        navigationItem.rightBarButtonItem?.isEnabled = isEnabled
-//    }
+    func changeSaveButtonState(isEnabled: Bool) {
+        navigationItem.rightBarButtonItems?[0].isEnabled = isEnabled
+    }
 }
 
 private extension EditViewController {
@@ -55,14 +57,16 @@ private extension EditViewController {
         })
         navigationItem.leftBarButtonItem?.tintColor = .systemBlue
         
-        let doneBarButton = BlockBarButtonItem.item(style: .save, handler: { [weak self] in
+        let saveBarButton = BlockBarButtonItem.item(style: .save, handler: { [weak self] in
+            guard let editedTaskViewModel = self?.viewValues else { return }
+            self?.output.onSaveTap(editedTaskViewModel: editedTaskViewModel)
         })
         
         let deleteBarButton = BlockBarButtonItem.item(style: .trash, handler: { [weak self] in
             self?.output.onDeleteTap()
         })
         
-        navigationItem.rightBarButtonItems = [doneBarButton, deleteBarButton]
+        navigationItem.rightBarButtonItems = [saveBarButton, deleteBarButton]
         navigationItem.rightBarButtonItems?[0].tintColor = .systemGreen
         navigationItem.rightBarButtonItems?[0].isEnabled = false
         navigationItem.rightBarButtonItems?[1].tintColor = .systemRed

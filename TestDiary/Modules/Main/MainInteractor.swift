@@ -77,7 +77,6 @@ extension MainInteractor: MainInteractorInput {
 
 private extension MainInteractor {
     @objc func dataBaseUpdated() {
-        print("база данных изменена")
         getTasksBy(date: chosenDate)
     }
 }

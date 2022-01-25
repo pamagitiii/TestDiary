@@ -52,4 +52,4 @@ private extension AppCoordinator {
         UINavigationBar.appearance().isTranslucent = false
         UINavigationBar.appearance().shadowImage = UIImage()
     }
-    }
+}

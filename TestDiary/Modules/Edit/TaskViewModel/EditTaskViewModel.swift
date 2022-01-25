@@ -8,8 +8,8 @@
 import Foundation
 
 struct EditTaskViewModel {
-    let name: String
-    let startDate: Date
-    let endDate: Date
-    let description: String?
+    var name: String
+    var startDate: Date
+    var endDate: Date
+    var description: String?
 }

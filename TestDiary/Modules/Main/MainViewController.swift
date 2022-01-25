@@ -110,7 +110,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         output.didSelectRowWith(id: viewModels[indexPath.section].cellViewModels[indexPath.row].id)
-        
+        mainView.tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

@@ -232,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				CE149F4C278C23AC00BF990F /* BlockBarButtonItem.swift */,
+				CE149F52278C881700BF990F /* NewTaskView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -247,7 +248,6 @@
 		CE149F51278C87ED00BF990F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CE149F52278C881700BF990F /* NewTaskView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
