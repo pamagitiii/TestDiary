@@ -38,6 +38,8 @@ class BaseTaskEditViewController: UIViewController, ViewToControllerOutput {
         
         viewValues = viewModel
         
+        customView.endDatePicker.minimumDate = viewModel.startDate
+        
         customView.nameTextField.text = viewModel.name
         customView.startDatePicker.date = viewModel.startDate
         customView.endDatePicker.date = viewModel.endDate
