@@ -4,7 +4,7 @@
 //
 //  Created by Anatoliy on 05.01.2022.
 //  
-//
+//refactor init
 
 import Foundation
 
