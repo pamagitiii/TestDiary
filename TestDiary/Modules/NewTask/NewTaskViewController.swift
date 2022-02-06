@@ -46,17 +46,21 @@ private extension NewTaskViewController {
     func setupNavigationBar() {
         navigationItem.title = "New task"
         
-        navigationItem.rightBarButtonItem = BlockBarButtonItem.item(style: .save, handler: { [weak self] in
+        navigationItem.rightBarButtonItem = BlockBarButton(barButtonSystemItem: .save,
+                                                           target: nil,
+                                                           action: nil).withAction { [weak self] in
             guard let newTaskViewModel = self?.viewValues else { return }
             self?.output.onSaveTap(newTaskViewModel: newTaskViewModel)
-        })
+        }
+        navigationItem.leftBarButtonItem = BlockBarButton(barButtonSystemItem: .cancel,
+                                                          target: nil,
+                                                          action: nil).withAction { [weak self] in
+            self?.output.onCloseTap()
+        }
+        
         navigationItem.rightBarButtonItem?.tintColor = .systemGreen
         navigationItem.rightBarButtonItem?.isEnabled = false
         
-        navigationItem.leftBarButtonItem = BlockBarButtonItem.item(style: .cancel, handler: { [weak self] in
-            self?.becomeFirstResponder()
-            self?.output.onCloseTap()
-        })
         navigationItem.leftBarButtonItem?.tintColor = .systemRed
     }
 }

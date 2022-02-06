@@ -18,31 +18,9 @@ final class TaskTableViewCell: UITableViewCell {
         return label
     }()
     
-    private let separeteLine: UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemBlue
-        return view
-    }()
-    
-    private let startLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = UIColor.systemGray
-        label.font = .systemFont(ofSize: 12, weight: .light)
-        label.numberOfLines = 1
-        label.minimumScaleFactor = 0.5
-        label.adjustsFontSizeToFitWidth = true
-        return label
-    }()
-    
-    private let endLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = UIColor.systemGray
-        label.font = .systemFont(ofSize: 12, weight: .light)
-        label.numberOfLines = 1
-        label.minimumScaleFactor = 0.5
-        label.adjustsFontSizeToFitWidth = true
-        return label
-    }()
+    private let separeteLine = SeparateView(withBackground: .systemBlue)
+    private let startLabel = CellDateLabel()
+    private let endLabel = CellDateLabel()
     
     private let arrowImageView: UIImageView = {
         let imageView = UIImageView()
@@ -79,11 +57,6 @@ private extension TaskTableViewCell {
                                      arrowImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.4),
                                      arrowImageView.widthAnchor.constraint(equalTo: arrowImageView.heightAnchor),
                                      arrowImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5)])
-        
-//        NSLayoutConstraint.activate([arrowImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-//                                     arrowImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.6),
-//                                     arrowImageView.widthAnchor.constraint(equalTo: arrowImageView.heightAnchor),
-//                                     arrowImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5)])
 
         NSLayoutConstraint.activate([separeteLine.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
                                      separeteLine.heightAnchor.constraint(equalToConstant: 0.5),

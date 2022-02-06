@@ -49,6 +49,9 @@
 		CEA046572785AC9800A3068F /* NewTaskInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA046512785AC9800A3068F /* NewTaskInteractor.swift */; };
 		CEA046582785AC9800A3068F /* NewTaskContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA046522785AC9800A3068F /* NewTaskContainer.swift */; };
 		CEA0465B2785B02F00A3068F /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA0465A2785B02F00A3068F /* UIView+.swift */; };
+		CEDE36AB27B000DD00FB1FFC /* SeparateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE36AA27B000DD00FB1FFC /* SeparateView.swift */; };
+		CEDE36AD27B00B3700FB1FFC /* CellDateLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE36AC27B00B3600FB1FFC /* CellDateLabel.swift */; };
+		CEDE36B027B03FF900FB1FFC /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE36AF27B03FF900FB1FFC /* String+.swift */; };
 		CEFA76CB2782120E0058F5C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFA76CA2782120E0058F5C5 /* AppDelegate.swift */; };
 		CEFA76CD2782120E0058F5C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFA76CC2782120E0058F5C5 /* SceneDelegate.swift */; };
 		CEFA76D4278212110058F5C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEFA76D3278212110058F5C5 /* Assets.xcassets */; };
@@ -125,6 +128,9 @@
 		CEA046512785AC9800A3068F /* NewTaskInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskInteractor.swift; sourceTree = "<group>"; };
 		CEA046522785AC9800A3068F /* NewTaskContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskContainer.swift; sourceTree = "<group>"; };
 		CEA0465A2785B02F00A3068F /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		CEDE36AA27B000DD00FB1FFC /* SeparateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparateView.swift; sourceTree = "<group>"; };
+		CEDE36AC27B00B3600FB1FFC /* CellDateLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellDateLabel.swift; sourceTree = "<group>"; };
+		CEDE36AF27B03FF900FB1FFC /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		CEFA76C72782120E0058F5C5 /* TestDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEFA76CA2782120E0058F5C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEFA76CC2782120E0058F5C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -232,7 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				CE149F4C278C23AC00BF990F /* BlockBarButtonItem.swift */,
-				CE149F52278C881700BF990F /* NewTaskView.swift */,
+				CEDE36AA27B000DD00FB1FFC /* SeparateView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -255,8 +261,8 @@
 		CE6C95A327983BDA00C05382 /* BaseClasses */ = {
 			isa = PBXGroup;
 			children = (
-				CE149F4A278C1E3900BF990F /* BaseRouter.swift */,
-				CE6C95BC279C41B100C05382 /* BaseTaskEditVC.swift */,
+				CEDE36B127B04CD900FB1FFC /* Router */,
+				CEDE36B227B04CED00FB1FFC /* EditVC */,
 			);
 			path = BaseClasses;
 			sourceTree = "<group>";
@@ -265,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				CE6C95A827984ECB00C05382 /* TaskTableViewCell.swift */,
+				CEDE36AE27B00B4200FB1FFC /* Cell views */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -370,8 +377,34 @@
 				CEA0465A2785B02F00A3068F /* UIView+.swift */,
 				CE1298312794B9C600E77F15 /* Date+.swift */,
 				CE6C95A427983C3000C05382 /* UITableView+.swift */,
+				CEDE36AF27B03FF900FB1FFC /* String+.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CEDE36AE27B00B4200FB1FFC /* Cell views */ = {
+			isa = PBXGroup;
+			children = (
+				CEDE36AC27B00B3600FB1FFC /* CellDateLabel.swift */,
+			);
+			path = "Cell views";
+			sourceTree = "<group>";
+		};
+		CEDE36B127B04CD900FB1FFC /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				CE149F4A278C1E3900BF990F /* BaseRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		CEDE36B227B04CED00FB1FFC /* EditVC */ = {
+			isa = PBXGroup;
+			children = (
+				CE6C95BC279C41B100C05382 /* BaseTaskEditVC.swift */,
+				CE149F52278C881700BF990F /* NewTaskView.swift */,
+			);
+			path = EditVC;
 			sourceTree = "<group>";
 		};
 		CEFA76BE2782120E0058F5C5 = {
@@ -704,6 +737,7 @@
 				CEA046582785AC9800A3068F /* NewTaskContainer.swift in Sources */,
 				CEA046482784DA2D00A3068F /* MainView.swift in Sources */,
 				CE1298322794B9C700E77F15 /* Date+.swift in Sources */,
+				CEDE36AD27B00B3700FB1FFC /* CellDateLabel.swift in Sources */,
 				CE6C95A527983C3000C05382 /* UITableView+.swift in Sources */,
 				CE12981E27904A2E00E77F15 /* TaskModel.swift in Sources */,
 				CE12982C2792E66B00E77F15 /* RealmService.swift in Sources */,
@@ -716,6 +750,7 @@
 				CEA046402784B1C000A3068F /* MainRouter.swift in Sources */,
 				CE12982427906BB800E77F15 /* NetworkServiceProtocols.swift in Sources */,
 				CEA046542785AC9800A3068F /* NewTaskRouter.swift in Sources */,
+				CEDE36B027B03FF900FB1FFC /* String+.swift in Sources */,
 				CE12983027931F1F00E77F15 /* RealmSeviceProtocols.swift in Sources */,
 				CE6C95B9279ACE9800C05382 /* EditContainer.swift in Sources */,
 				CE6C95C0279EBEE100C05382 /* EditTaskViewModel.swift in Sources */,
@@ -723,6 +758,7 @@
 				CE149F53278C881700BF990F /* NewTaskView.swift in Sources */,
 				CEA046572785AC9800A3068F /* NewTaskInteractor.swift in Sources */,
 				CEA046552785AC9800A3068F /* NewTaskViewController.swift in Sources */,
+				CEDE36AB27B000DD00FB1FFC /* SeparateView.swift in Sources */,
 				CE6C95AC279888EB00C05382 /* TableViewViewModel.swift in Sources */,
 				CEA046562785AC9800A3068F /* NewTaskProtocols.swift in Sources */,
 				CEA0463F2784B1C000A3068F /* MainPresenter.swift in Sources */,

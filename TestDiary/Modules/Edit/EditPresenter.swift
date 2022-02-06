@@ -32,11 +32,7 @@ extension EditPresenter: EditViewOutput {
     }
     
     func checkSaveButtonState(inputValue: EditTaskViewModel) {
-        if inputValue.name != "" && inputValue.endDate > inputValue.startDate {
-            view?.changeSaveButtonState(isEnabled: true)
-        } else {
-            view?.changeSaveButtonState(isEnabled: false)
-        }
+        inputValue.name.isValid() ? view?.changeSaveButtonState(isEnabled: true) : view?.changeSaveButtonState(isEnabled: false)
     }
     
     func onDeleteTap() {

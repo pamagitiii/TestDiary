@@ -115,7 +115,7 @@ class NewTaskView: UIView {
         
         backgroundColor = .white
         
-        tapGestureRecognizer.addTarget(self, action: #selector(self.viewTapped))
+        tapGestureRecognizer.addTarget(self, action: #selector(self.hideKeyboard))
         addGestureRecognizer(tapGestureRecognizer)
         
         addSubviews([nameTextField, startTimeLabel, endTimeLabel, descriptionLabel, descriptionTextView])
@@ -217,19 +217,12 @@ class NewTaskView: UIView {
         startDatePicker.minimumDate = Date()
         endDatePicker.minimumDate = Date()
         
-        //startDatePicker.timeZone = TimeZone(abbreviation: "GMT")
-        //endDatePicker.timeZone = TimeZone(abbreviation: "GMT")
-        
         startDatePicker.addTarget(self, action: #selector(self.datePickerValueChanged(datePicker:)), for: .valueChanged)
         endDatePicker.addTarget(self, action: #selector(self.datePickerValueChanged(datePicker:)), for: .valueChanged)
     }
     
     // MARK: - Date Pickers values changed
     @objc private func datePickerValueChanged(datePicker: UIDatePicker) {
-        //        let dateFormatter = DateFormatter()
-        //        dateFormatter.timeZone = TimeZone(abbreviation: "UTC+3")
-        //        dateFormatter.dateFormat = "d MMM yyyy, HH:mm"
-        
         if datePicker == startDatePicker {
             startTextField?.text = dateFormatter.string(from: datePicker.date)
             startDate = datePicker.date
@@ -240,16 +233,14 @@ class NewTaskView: UIView {
             endDate = datePicker.date
         }
         
-        //        guard let endDate = endDate else { return }
-        //        guard let startDate = startDate else { return }
-        
         if endDate < startDate {
+            endDate = startDate
+            endDatePicker.date = startDate
             endTextFiled?.text = ""
-            //self.endDate = nil
         }
     }
     // MARK: - Hide keyboard
-    @objc func viewTapped() {
+    @objc func hideKeyboard() {
         endEditing(true)
     }
 }
@@ -270,7 +261,7 @@ extension NewTaskView: UITextViewDelegate, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        viewTapped()
+        hideKeyboard()
         return true
     }
 }

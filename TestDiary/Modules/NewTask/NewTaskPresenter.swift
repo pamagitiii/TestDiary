@@ -27,17 +27,7 @@ extension NewTaskPresenter: NewTaskModuleInput {
 extension NewTaskPresenter: NewTaskViewOutput {
     
     func checkSaveButtonState(inputValue: EditTaskViewModel) {
-        if inputValue.name != "" && inputValue.endDate > inputValue.startDate {
-            view?.changeSaveButtonState(isEnabled: true)
-        } else {
-            view?.changeSaveButtonState(isEnabled: false)
-        }
-        
-//        if startDate != nil && endDate != nil && taskName != nil {
-//            view?.changeSaveButtonState(isEnabled: true)
-//        } else {
-//            view?.changeSaveButtonState(isEnabled: false)
-//        }
+        inputValue.name.isValid() ? view?.changeSaveButtonState(isEnabled: true) : view?.changeSaveButtonState(isEnabled: false)
     }
     
     func onSaveTap(newTaskViewModel: EditTaskViewModel) {

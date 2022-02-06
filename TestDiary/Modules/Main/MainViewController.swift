@@ -14,7 +14,7 @@ final class MainViewController: UIViewController {
     private let output: MainViewOutput
     private let mainView = MainView()
     
-    var viewModels: [SectionViewModel] = []
+    private var viewModels: [SectionViewModel] = []
     
     // MARK: - Initialization
     init(output: MainViewOutput) {
@@ -33,14 +33,9 @@ final class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         setupTableView()
         setupCalendar()
-   
-        navigationItem.rightBarButtonItem = BlockBarButtonItem.item(style: .add, handler: { [weak self] in
-            self?.output.didTapAddButton()
-        })
-        
+        setupNavigationBar()
         output.viewDidLoad(calendarToday: mainView.calendar.today ?? Date())
     }
 }
@@ -64,6 +59,14 @@ private extension MainViewController {
     
     func setupCalendar() {
         mainView.calendar.delegate = self
+    }
+    
+    func setupNavigationBar() {
+        navigationItem.rightBarButtonItem = BlockBarButton(barButtonSystemItem: .add,
+                                                           target: nil,
+                                                           action: nil).withAction { [weak self] in
+            self?.output.didTapAddButton()
+        }
     }
 }
 

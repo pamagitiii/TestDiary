@@ -14,11 +14,7 @@ class MainView: UIView {
     private(set) lazy var calendar = FSCalendar()
     private(set) lazy var tableView = UITableView()
     
-    private let separateLineView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemGray
-        return view
-    }()
+    private let separateLineView = SeparateView(withBackground: .systemGray)
 
     private var didSetupConstraints = false
     
@@ -44,6 +40,7 @@ class MainView: UIView {
     
     // MARK: - Module functions
     private func setupViews() {
+        backgroundColor = .white
 
         calendar.appearance.headerTitleColor = .systemBlue
         calendar.appearance.weekdayTextColor = .systemBlue
@@ -52,7 +49,6 @@ class MainView: UIView {
     }
 
     private func setupConstraints() {
-        //calendar constraints
         NSLayoutConstraint.activate([calendar.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
                                      calendar.leadingAnchor.constraint(equalTo: self.leadingAnchor),
                                      calendar.trailingAnchor.constraint(equalTo: self.trailingAnchor),
@@ -63,7 +59,6 @@ class MainView: UIView {
                                      separateLineView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
                                      separateLineView.heightAnchor.constraint(equalToConstant: 0.5)])
         
-        //tableView constraints
         NSLayoutConstraint.activate([tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
                                      tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
                                      tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),

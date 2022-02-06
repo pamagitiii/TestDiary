@@ -29,9 +29,11 @@ class BaseTaskEditViewController: UIViewController, ViewToControllerOutput {
     override func viewDidLoad() {
         super.viewDidLoad()
         customView.output = self
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        subscribeToKeyboardNotifications()
+    }
+    
+    func close() {
+        customView.hideKeyboard()
     }
     
     func setupWithViewModel(viewModel: EditTaskViewModel) {
@@ -72,6 +74,11 @@ class BaseTaskEditViewController: UIViewController, ViewToControllerOutput {
 
 // MARK: - Keyboard show/hide logic
 private extension BaseTaskEditViewController {
+    func subscribeToKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
     @objc func keyboardWillShow(notification: NSNotification) {
         
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
