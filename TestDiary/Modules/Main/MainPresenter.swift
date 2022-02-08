@@ -65,12 +65,11 @@ private extension MainPresenter {
             //создаём интервал одного часа из нажатого дня
             let interval = DateInterval(start: Calendar.current.date(byAdding: .second, value: 1, to: date) ?? Date(),
                                         end: Calendar.current.date(byAdding: .second, value: 3599, to: date) ?? Date())
-            
+
             //генерируем заголовок для секции
             formatter.dateFormat = "HH:mm"
             let nextHour = Calendar.current.date(byAdding: .hour, value: 1, to: date) ?? Date()
             let sectionTitle = formatter.string(from: date) + " - " + formatter.string(from: nextHour)
-            
             //создаём секцию
             var newSection = SectionViewModel(headetTitleText: sectionTitle, cellViewModels: [])
             

@@ -13,7 +13,7 @@ final class MainInteractor {
     private let tasksNetworkService: TasksNetworkProtocol
     private let taskRealmService: TaskRealmProtocol
     
-    //при загруке контроллера приходит сегодняшняя дата с календаря, при тапе по календарю - выбранная юзером дата
+    ///при загруке контроллера приходит сегодняшняя дата с календаря, при тапе по календарю - выбранная юзером дата
     private var chosenDate: Date
     
     init(tasksNetworkService: TasksNetworkProtocol, taskRealmService: TaskRealmProtocol) {
@@ -33,7 +33,6 @@ final class MainInteractor {
 extension MainInteractor: MainInteractorInput {
     
     func updateDataBaseFromNetwork(todayDate: Date) {
-        
         chosenDate = todayDate
         
         let params = TasksRequestParams(resourceName: "MockData", withExtension: "json")
@@ -41,11 +40,9 @@ extension MainInteractor: MainInteractorInput {
             
             switch result {
             case .success(let response):
-                
                 guard let self = self else { return }
                 
                 self.taskRealmService.saveTasks(tasks: response.tasks)
-                
                 self.getTasksBy(date: self.chosenDate)
                 
                 let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
@@ -62,12 +59,12 @@ extension MainInteractor: MainInteractorInput {
         
         var resutTasksArray: [Task] = []
         let realmTasks: [Task]? = taskRealmService.getAllTasks()
-        let inputDayDateInterval = DateInterval(start: date, duration: 82800 + 3540 + 59) //интрвал с начала дня + 23ч 59мин 59сек
+        let inputDayDateInterval = DateInterval(start: date, duration: 82800 + 3540 + 59) ///интрвал с начала дня + 23ч 59мин 59сек
 
         guard let realmTasks = realmTasks else { return }
         for task in realmTasks {
 
-            let tasksDateInterval = DateInterval(start: task.dateStart, end: task.dateFinish) //интервал с начала задачи до окончания
+            let tasksDateInterval = DateInterval(start: task.dateStart, end: task.dateFinish) ///интервал с начала задачи до окончания
             if tasksDateInterval.intersects(inputDayDateInterval) {
                 resutTasksArray.append(task)
             }

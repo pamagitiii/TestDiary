@@ -9,8 +9,11 @@ import Foundation
 
 extension NetworkService: TasksNetworkProtocol {
     func requestTasks(params: TasksRequestParams, completion: @escaping (Result<TasksRespose, Error>) -> Void) {
-        
-        let url = URLFactory.getTasksUrl(params: params)
+        do {
+        let url = try URLFactory.getTasksUrl(params: params)
         baseRequest(url: url, completion: completion)
+        } catch let error {
+            print(error.localizedDescription)
+        }
     }
 }

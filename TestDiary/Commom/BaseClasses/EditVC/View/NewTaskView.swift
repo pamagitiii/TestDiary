@@ -19,30 +19,10 @@ class NewTaskView: UIView {
         textField.textAlignment = .center
         return textField
     }()
-    
-    private let startTimeLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Start:"
-        label.font = .boldSystemFont(ofSize: 17)
-        label.textAlignment = .center
-        return label
-    }()
-    
-    private let endTimeLabel: UILabel = {
-        let label = UILabel()
-        label.text = "End:"
-        label.font = .boldSystemFont(ofSize: 17)
-        label.textAlignment = .center
-        return label
-    }()
-    
-    private let descriptionLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Task description:"
-        label.font = .boldSystemFont(ofSize: 17)
-        label.textAlignment = .center
-        return label
-    }()
+
+    private let startTimeLabel = BoldUILabel(text: "Start:")
+    private let endTimeLabel = BoldUILabel(text: "End:")
+    private let descriptionLabel = BoldUILabel(text: "Task description:")
     
     private(set) lazy var descriptionTextView: UITextView = {
         let textView = UITextView()
@@ -74,22 +54,34 @@ class NewTaskView: UIView {
     // MARK: - Value properties
     var taskName = "" {
         didSet {
-            output?.inputValueChanged(name: taskName, startDate: startDate, endDate: endDate, description: taskDescription)
+            output?.inputValueChanged(name: taskName,
+                                      startDate: startDate,
+                                      endDate: endDate,
+                                      description: taskDescription)
         }
     }
     var taskDescription: String? {
         didSet {
-            output?.inputValueChanged(name: taskName, startDate: startDate, endDate: endDate, description: taskDescription)
+            output?.inputValueChanged(name: taskName,
+                                      startDate: startDate,
+                                      endDate: endDate,
+                                      description: taskDescription)
         }
     }
     var startDate = Date() {
         didSet {
-            output?.inputValueChanged(name: taskName, startDate: startDate, endDate: endDate, description: taskDescription)
+            output?.inputValueChanged(name: taskName,
+                                      startDate: startDate,
+                                      endDate: endDate,
+                                      description: taskDescription)
         }
     }
     var endDate = Date() {
         didSet {
-            output?.inputValueChanged(name: taskName, startDate: startDate, endDate: endDate, description: taskDescription)
+            output?.inputValueChanged(name: taskName,
+                                      startDate: startDate,
+                                      endDate: endDate,
+                                      description: taskDescription)
         }
     }
     
@@ -105,7 +97,6 @@ class NewTaskView: UIView {
     
     // MARK: - Setup Views
     private func setupViews() {
-        
         startDatePicker.date = Date()
         
         nameTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
