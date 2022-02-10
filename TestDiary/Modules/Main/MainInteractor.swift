@@ -31,13 +31,11 @@ final class MainInteractor {
 }
 
 extension MainInteractor: MainInteractorInput {
-    
     func updateDataBaseFromNetwork(todayDate: Date) {
         chosenDate = todayDate
         
         let params = TasksRequestParams(resourceName: "MockData", withExtension: "json")
         tasksNetworkService.requestTasks(params: params) { [weak self] result in
-            
             switch result {
             case .success(let response):
                 guard let self = self else { return }
@@ -62,8 +60,9 @@ extension MainInteractor: MainInteractorInput {
         let inputDayDateInterval = DateInterval(start: date, duration: 82800 + 3540 + 59) ///интрвал с начала дня + 23ч 59мин 59сек
 
         guard let realmTasks = realmTasks else { return }
+        
         for task in realmTasks {
-
+            guard task.dateStart <= task.dateFinish else { continue }
             let tasksDateInterval = DateInterval(start: task.dateStart, end: task.dateFinish) ///интервал с начала задачи до окончания
             if tasksDateInterval.intersects(inputDayDateInterval) {
                 resutTasksArray.append(task)

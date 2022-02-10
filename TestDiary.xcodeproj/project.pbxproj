@@ -54,11 +54,17 @@
 		CEDE36B027B03FF900FB1FFC /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE36AF27B03FF900FB1FFC /* String+.swift */; };
 		CEDE36B627B15B1D00FB1FFC /* BoldLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE36B527B15B1D00FB1FFC /* BoldLabel.swift */; };
 		CEDE36BC27B3019900FB1FFC /* MainInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE36BB27B3019800FB1FFC /* MainInteractorMock.swift */; };
+		CEDE36BE27B3DC5200FB1FFC /* MainInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE36BD27B3DC5100FB1FFC /* MainInteractorTest.swift */; };
+		CEDE36C027B3DD2700FB1FFC /* MainPresenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE36BF27B3DD2700FB1FFC /* MainPresenterMock.swift */; };
+		CEDE36C227B3F23400FB1FFC /* ServicesMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE36C127B3F23400FB1FFC /* ServicesMock.swift */; };
+		CEDE36C427B4010F00FB1FFC /* MainVCMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE36C327B4010F00FB1FFC /* MainVCMock.swift */; };
+		CEDE36C627B408C100FB1FFC /* MainPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE36C527B408C000FB1FFC /* MainPresenterTest.swift */; };
+		CEDE36C827B40C4C00FB1FFC /* MainRouterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE36C727B40C4B00FB1FFC /* MainRouterMock.swift */; };
+		CEDE36CA27B57A8700FB1FFC /* MainViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE36C927B57A8600FB1FFC /* MainViewControllerTest.swift */; };
 		CEFA76CB2782120E0058F5C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFA76CA2782120E0058F5C5 /* AppDelegate.swift */; };
 		CEFA76CD2782120E0058F5C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFA76CC2782120E0058F5C5 /* SceneDelegate.swift */; };
 		CEFA76D4278212110058F5C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEFA76D3278212110058F5C5 /* Assets.xcassets */; };
 		CEFA76D7278212110058F5C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEFA76D5278212110058F5C5 /* LaunchScreen.storyboard */; };
-		CEFA76E2278212110058F5C5 /* TestDiaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFA76E1278212110058F5C5 /* TestDiaryTests.swift */; };
 		CEFA76EC278212110058F5C5 /* TestDiaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFA76EB278212110058F5C5 /* TestDiaryUITests.swift */; };
 		CEFA76EE278212110058F5C5 /* TestDiaryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFA76ED278212110058F5C5 /* TestDiaryUITestsLaunchTests.swift */; };
 		EF9701C19D293112D6306109 /* Pods_TestDiaryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E5A64C8D5E8B3B624613E06 /* Pods_TestDiaryTests.framework */; };
@@ -135,6 +141,13 @@
 		CEDE36AF27B03FF900FB1FFC /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		CEDE36B527B15B1D00FB1FFC /* BoldLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoldLabel.swift; sourceTree = "<group>"; };
 		CEDE36BB27B3019800FB1FFC /* MainInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractorMock.swift; sourceTree = "<group>"; };
+		CEDE36BD27B3DC5100FB1FFC /* MainInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractorTest.swift; sourceTree = "<group>"; };
+		CEDE36BF27B3DD2700FB1FFC /* MainPresenterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenterMock.swift; sourceTree = "<group>"; };
+		CEDE36C127B3F23400FB1FFC /* ServicesMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesMock.swift; sourceTree = "<group>"; };
+		CEDE36C327B4010F00FB1FFC /* MainVCMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVCMock.swift; sourceTree = "<group>"; };
+		CEDE36C527B408C000FB1FFC /* MainPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenterTest.swift; sourceTree = "<group>"; };
+		CEDE36C727B40C4B00FB1FFC /* MainRouterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouterMock.swift; sourceTree = "<group>"; };
+		CEDE36C927B57A8600FB1FFC /* MainViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerTest.swift; sourceTree = "<group>"; };
 		CEFA76C72782120E0058F5C5 /* TestDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEFA76CA2782120E0058F5C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEFA76CC2782120E0058F5C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -142,7 +155,6 @@
 		CEFA76D6278212110058F5C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEFA76D8278212110058F5C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEFA76DD278212110058F5C5 /* TestDiaryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestDiaryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CEFA76E1278212110058F5C5 /* TestDiaryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDiaryTests.swift; sourceTree = "<group>"; };
 		CEFA76E7278212110058F5C5 /* TestDiaryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestDiaryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEFA76EB278212110058F5C5 /* TestDiaryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDiaryUITests.swift; sourceTree = "<group>"; };
 		CEFA76ED278212110058F5C5 /* TestDiaryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDiaryUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -448,6 +460,9 @@
 			isa = PBXGroup;
 			children = (
 				CEDE36BA27B2FF3700FB1FFC /* Stubs */,
+				CEDE36BD27B3DC5100FB1FFC /* MainInteractorTest.swift */,
+				CEDE36C527B408C000FB1FFC /* MainPresenterTest.swift */,
+				CEDE36C927B57A8600FB1FFC /* MainViewControllerTest.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -456,8 +471,28 @@
 			isa = PBXGroup;
 			children = (
 				CEDE36BB27B3019800FB1FFC /* MainInteractorMock.swift */,
+				CEDE36BF27B3DD2700FB1FFC /* MainPresenterMock.swift */,
+				CEDE36C327B4010F00FB1FFC /* MainVCMock.swift */,
+				CEDE36C727B40C4B00FB1FFC /* MainRouterMock.swift */,
+				CEDE36C127B3F23400FB1FFC /* ServicesMock.swift */,
 			);
 			path = Stubs;
+			sourceTree = "<group>";
+		};
+		CEDE36CB27B5832100FB1FFC /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				CEFA76D5278212110058F5C5 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		CEDE36CC27B5833900FB1FFC /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				CEFA76D3278212110058F5C5 /* Assets.xcassets */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		CEFA76BE2782120E0058F5C5 = {
@@ -491,11 +526,11 @@
 				CEA046592785AFDB00A3068F /* Extensions */,
 				CEA0464B2785941400A3068F /* Coordinator */,
 				CEA046382784AF4600A3068F /* Modules */,
+				CEFA76D8278212110058F5C5 /* Info.plist */,
 				CEFA76CA2782120E0058F5C5 /* AppDelegate.swift */,
 				CEFA76CC2782120E0058F5C5 /* SceneDelegate.swift */,
-				CEFA76D3278212110058F5C5 /* Assets.xcassets */,
-				CEFA76D5278212110058F5C5 /* LaunchScreen.storyboard */,
-				CEFA76D8278212110058F5C5 /* Info.plist */,
+				CEDE36CC27B5833900FB1FFC /* Assets */,
+				CEDE36CB27B5832100FB1FFC /* Storyboard */,
 			);
 			path = TestDiary;
 			sourceTree = "<group>";
@@ -504,7 +539,6 @@
 			isa = PBXGroup;
 			children = (
 				CEDE36B827B2FEFC00FB1FFC /* Modules */,
-				CEFA76E1278212110058F5C5 /* TestDiaryTests.swift */,
 			);
 			path = TestDiaryTests;
 			sourceTree = "<group>";
@@ -838,8 +872,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEFA76E2278212110058F5C5 /* TestDiaryTests.swift in Sources */,
+				CEDE36CA27B57A8700FB1FFC /* MainViewControllerTest.swift in Sources */,
+				CEDE36BE27B3DC5200FB1FFC /* MainInteractorTest.swift in Sources */,
+				CEDE36C027B3DD2700FB1FFC /* MainPresenterMock.swift in Sources */,
+				CEDE36C627B408C100FB1FFC /* MainPresenterTest.swift in Sources */,
+				CEDE36C227B3F23400FB1FFC /* ServicesMock.swift in Sources */,
+				CEDE36C427B4010F00FB1FFC /* MainVCMock.swift in Sources */,
 				CEDE36BC27B3019900FB1FFC /* MainInteractorMock.swift in Sources */,
+				CEDE36C827B40C4C00FB1FFC /* MainRouterMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

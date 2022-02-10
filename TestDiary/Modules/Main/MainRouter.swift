@@ -24,7 +24,7 @@ extension MainRouter: MainRouterInput {
     
     func presentNewTaskModule() {
         guard let moduleDependencies = moduleDependencies else { return }
-        let context = NewTaskContext(moduleDataBaseDependency: moduleDependencies, moduleOutput: self) //далее передаётся одна зависимость
+        let context = NewTaskContext(moduleDataBaseDependency: moduleDependencies, moduleOutput: self) ///далее передаётся одна зависимость
         let container = NewTaskContainer.assemble(with: context)
         let navVC = UINavigationController(rootViewController: container.viewController)
         self.navigationController?.present(navVC, animated: true)

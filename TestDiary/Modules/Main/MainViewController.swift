@@ -11,7 +11,7 @@ import FSCalendar
 
 final class MainViewController: UIViewController {
     
-    private let output: MainViewOutput
+    let output: MainViewOutput
     private let mainView = MainView()
     
     private var viewModels: [SectionViewModel] = []

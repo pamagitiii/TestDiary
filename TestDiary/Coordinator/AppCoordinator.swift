@@ -29,7 +29,6 @@ class AppCoordinator {
 
 private extension AppCoordinator {
     func setupMainModule() {
-        
         let context = MainContext(moduleDependencies: self.appDependency, moduleOutput: nil)
         let container = MainContainer.assemble(with: context)
         navigationController.setViewControllers([container.viewController], animated: false)
