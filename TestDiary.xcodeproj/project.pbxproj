@@ -495,6 +495,15 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
+		CEDE36CD27B5A0E600FB1FFC /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				CEFA76CA2782120E0058F5C5 /* AppDelegate.swift */,
+				CEFA76CC2782120E0058F5C5 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
 		CEFA76BE2782120E0058F5C5 = {
 			isa = PBXGroup;
 			children = (
@@ -527,8 +536,7 @@
 				CEA0464B2785941400A3068F /* Coordinator */,
 				CEA046382784AF4600A3068F /* Modules */,
 				CEFA76D8278212110058F5C5 /* Info.plist */,
-				CEFA76CA2782120E0058F5C5 /* AppDelegate.swift */,
-				CEFA76CC2782120E0058F5C5 /* SceneDelegate.swift */,
+				CEDE36CD27B5A0E600FB1FFC /* Application */,
 				CEDE36CC27B5833900FB1FFC /* Assets */,
 				CEDE36CB27B5832100FB1FFC /* Storyboard */,
 			);

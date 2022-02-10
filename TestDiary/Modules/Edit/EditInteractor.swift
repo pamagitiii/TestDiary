@@ -9,6 +9,7 @@
 import Foundation
 
 final class EditInteractor {
+    
 	weak var output: EditInteractorOutput?
     private let id: Int
     

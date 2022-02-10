@@ -9,6 +9,7 @@ import Foundation
 import RealmSwift
 
 class Task: Object, Decodable {
+    
     @Persisted(primaryKey: true) var id: Int
     @Persisted var dateStart: Date
     @Persisted var dateFinish: Date

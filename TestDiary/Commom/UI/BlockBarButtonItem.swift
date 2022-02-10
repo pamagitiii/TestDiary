@@ -9,22 +9,6 @@ import UIKit
 
 typealias VoidClosure = () -> Void
 
-class BlockBarButtonItem: UIBarButtonItem {
-    
-    private var handler: VoidClosure?
-    
-    static func item(style: UIBarButtonItem.SystemItem, handler: @escaping VoidClosure) -> UIBarButtonItem {
-        let result = BlockBarButtonItem(barButtonSystemItem: style, target: nil, action: nil)
-        result.handler = handler
-        result.action = #selector(onTap)
-        return result
-    }
-    
-    @objc private func onTap() {
-        self.handler?()
-    }
-}
-
 final class BlockBarButton: UIBarButtonItem {
     
     private var handler: VoidClosure?

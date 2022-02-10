@@ -9,6 +9,7 @@
 import UIKit
 
 final class MainContainer {
+    
     let input: MainModuleInput
     let viewController: UIViewController
     private(set) weak var router: MainRouterInput!

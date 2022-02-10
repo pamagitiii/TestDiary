@@ -4,6 +4,7 @@
 //
 //  Created by Anatoliy on 13.01.2022.
 //
+// swiftlint:disable no_direct_standard_out_logs
 
 import Foundation
 

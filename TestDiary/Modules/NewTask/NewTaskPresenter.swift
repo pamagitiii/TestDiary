@@ -9,6 +9,7 @@
 import Foundation
 
 final class NewTaskPresenter {
+    
     weak var view: NewTaskViewInput?
     weak var moduleOutput: NewTaskModuleOutput?
     

@@ -9,6 +9,7 @@
 import UIKit
 
 final class NewTaskViewController: BaseTaskEditViewController {
+    
     private let output: NewTaskViewOutput
     
     // MARK: - Init

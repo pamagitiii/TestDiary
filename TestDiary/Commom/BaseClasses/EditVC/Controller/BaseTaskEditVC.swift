@@ -32,6 +32,7 @@ class BaseTaskEditViewController: UIViewController, ViewToControllerOutput {
         subscribeToKeyboardNotifications()
     }
     
+    // MARK: - Public methods
     func close() {
         customView.hideKeyboard()
     }

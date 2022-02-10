@@ -9,6 +9,7 @@
 import Foundation
 
 final class EditPresenter {
+    
 	weak var view: EditViewInput?
     weak var moduleOutput: EditModuleOutput?
     

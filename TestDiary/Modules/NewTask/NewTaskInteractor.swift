@@ -9,6 +9,7 @@
 import Foundation
 
 final class NewTaskInteractor {
+    
     weak var output: NewTaskInteractorOutput?
     
     private let taskRealmService: TaskRealmProtocol

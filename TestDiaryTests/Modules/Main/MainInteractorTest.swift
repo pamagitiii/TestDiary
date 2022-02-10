@@ -3,7 +3,7 @@
 //  TestDiaryTests
 //
 //  Created by Anatoliy on 09.02.2022.
-//
+// swiftlint:disable implicitly_unwrapped_optional
 
 import XCTest
 @testable import TestDiary

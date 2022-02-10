@@ -9,6 +9,7 @@
 import UIKit
 
 final class NewTaskContainer {
+    
     let input: NewTaskModuleInput
 	let viewController: UIViewController
 	private(set) weak var router: NewTaskRouterInput!

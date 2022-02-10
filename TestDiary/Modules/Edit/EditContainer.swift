@@ -9,6 +9,7 @@
 import UIKit
 
 final class EditContainer {
+    
     let input: EditModuleInput
 	let viewController: UIViewController
 	private(set) weak var router: EditRouterInput!

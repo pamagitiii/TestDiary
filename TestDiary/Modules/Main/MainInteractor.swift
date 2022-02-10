@@ -9,6 +9,7 @@
 import Foundation
 
 final class MainInteractor {
+    
     weak var output: MainInteractorOutput?
     private let tasksNetworkService: TasksNetworkProtocol
     private let taskRealmService: TaskRealmProtocol
@@ -43,8 +44,8 @@ extension MainInteractor: MainInteractorInput {
                 self.taskRealmService.saveTasks(tasks: response.tasks)
                 self.getTasksBy(date: self.chosenDate)
                 
-                let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-                print(paths[0])
+                //let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+                //print(paths[0])
                 
             case .failure(let error):
                 print(error.localizedDescription)
