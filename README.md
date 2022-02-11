@@ -14,5 +14,5 @@
 - VIPER architecture + Coordinator
 - Emulation of loading data from backend (bundle JSON file)
 - Realm for storage
-- FSCalendar for storage
+- FSCalendar for calendar
 - Unit tests for Main module business logic
