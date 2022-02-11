@@ -36,15 +36,18 @@ private extension AppCoordinator {
     }
     
     func setupAppearance() {
-        let appearance = UINavigationBarAppearance()
         
-        appearance.configureWithOpaqueBackground()
-        let blueColor = UIColor.systemBlue
-        appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: blueColor]
-        appearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: blueColor]
-        
-        UINavigationBar.appearance().standardAppearance = appearance
-        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        if #available(iOS 13.0, *) {
+            let appearance = UINavigationBarAppearance()
+            
+            appearance.configureWithOpaqueBackground()
+            let blueColor = UIColor.systemBlue
+            appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: blueColor]
+            appearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: blueColor]
+            
+            UINavigationBar.appearance().standardAppearance = appearance
+            UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        }
         
         UINavigationBar.appearance().barTintColor = .white
         UINavigationBar.appearance().tintColor = .black

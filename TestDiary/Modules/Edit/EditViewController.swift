@@ -51,25 +51,33 @@ extension EditViewController: EditViewInput {
 private extension EditViewController {
     func setupNavigationBar() {
         navigationItem.title = "Edit task"
-
-        navigationItem.leftBarButtonItem = BlockBarButton(barButtonSystemItem: .close,
-                                                          target: nil,
-                                                          action: nil).withAction { [weak self] in
-            self?.output.onCloseTap()
+        
+        if #available(iOS 13, *) {
+            navigationItem.leftBarButtonItem = BlockBarButton(barButtonSystemItem: .close,
+                                                              target: nil,
+                                                              action: nil).withAction { [weak self] in
+                self?.output.onCloseTap()
+            }
+        } else {
+            navigationItem.leftBarButtonItem = BlockBarButton(barButtonSystemItem: .cancel,
+                                                              target: nil,
+                                                              action: nil).withAction { [weak self] in
+                self?.output.onCloseTap()
+            }
         }
-   
+        
         let saveBarButton = BlockBarButton(barButtonSystemItem: .save,
                                            target: nil,
                                            action: nil).withAction { [weak self] in
             guard let editedTaskViewModel = self?.viewValues else { return }
             self?.output.onSaveTap(editedTaskViewModel: editedTaskViewModel)
         }
-
+        
         let deleteBarButton = BlockBarButton(barButtonSystemItem: .trash,
                                              target: nil,
                                              action: nil).withAction { [weak self] in
             self?.output.onDeleteTap()
-          }
+        }
         
         navigationItem.rightBarButtonItems = [saveBarButton, deleteBarButton]
         navigationItem.rightBarButtonItems?[0].tintColor = .systemGreen

@@ -25,7 +25,12 @@ final class TaskTableViewCell: UITableViewCell {
     private let arrowImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(systemName: "chevron.right")?.withTintColor(.systemBlue, renderingMode: .alwaysOriginal)
+        
+        if #available(iOS 13.0, *) {
+            imageView.image = UIImage(systemName: "chevron.right")?.withTintColor(.systemBlue, renderingMode: .alwaysOriginal)
+                } else {
+                    imageView.image = UIImage(named: "chevron")
+                }
         return imageView
     }()
 
