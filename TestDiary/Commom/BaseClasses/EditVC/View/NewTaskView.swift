@@ -74,6 +74,7 @@ class NewTaskView: UIView {
                                       startDate: startDate,
                                       endDate: endDate,
                                       description: taskDescription)
+            endDatePicker.minimumDate = Calendar.current.date(byAdding: .minute, value: 1, to: startDate) ?? Date()
         }
     }
     var endDate = Date() {
@@ -217,7 +218,7 @@ class NewTaskView: UIView {
         if datePicker == startDatePicker {
             startTextField?.text = dateFormatter.string(from: datePicker.date)
             startDate = datePicker.date
-            endDatePicker.minimumDate = datePicker.date
+            endDatePicker.minimumDate = Calendar.current.date(byAdding: .minute, value: 1, to: startDate) ?? Date()
             
         } else if datePicker == endDatePicker {
             endTextFiled?.text = dateFormatter.string(from: datePicker.date)
